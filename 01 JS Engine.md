@@ -84,4 +84,8 @@ In this case the `V8` engine brings the `JIT Compiler`.
 
 ### Is Javascript interpreted language?
 
+It depends on the implementation.
+
 Initially `JS` was the interpreted language. Now with `V8` it's the `Compiled` language.
+
+Same goes for the `Python`. It could be both, interpreted or compiled.
