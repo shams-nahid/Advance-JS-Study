@@ -28,5 +28,3 @@ var myMethod = function myMethodName() {
 ```
 
 Here the `myMethod` belongs to the global lexical environment. But the `myMethodName` belongs to the functional lexical environment.
-
-
