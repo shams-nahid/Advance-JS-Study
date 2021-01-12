@@ -158,6 +158,7 @@ Here both `a` and `b` have the `this` context of `obj`.
 We can manipulate the `this` keyword using the following methods
 
 - call()
+
   - Every time we invoke a method, `call()` method is being invoked internally.
     ```js
     var myMethod = function () {};
@@ -165,14 +166,179 @@ We can manipulate the `this` keyword using the following methods
     myMethod();
     myMethod.call();
     ```
+
+  Let's took an method using the call method.
+
+  ```js
+  const wizard = {
+    name: 'Wizard',
+    health: 50,
+    heal() {
+      this.health = 100;
+    }
+  };
+
+  const archer = {
+    name: 'Archer',
+    health: 30
+  };
+
+  wizard.heal.call(archer);
+
+  console.log(archer);
+  ```
+
+  This will print
+
+  ```bash
+  {
+    name: 'Archer',
+    health: 100
+  }
+  ```
+
+  Here the health property is same as the `wizard` object.
+
+  Now, let see another example of passing parameter using the `call` method.
+
+  ```js
+  const wizard = {
+    name: 'Wizard',
+    health: 50,
+    heal(param1, param2) {
+      this.health = this.health + param1 + param2;
+    }
+  };
+
+  const archer = {
+    name: 'Archer',
+    health: 30
+  };
+
+  wizard.heal.call(archer, 10, 20);
+
+  console.log(archer);
+  ```
+
+  This will add the params `10` and `20` with it existing value `30`.
+
+  So the printed value be,
+
+  ```bash
+  {
+    name: 'Archer',
+    health: 60
+  }
+  ```
+
 - apply()
+
+  - `apply()` is similar to `call()`
+  - It uses `call()` underlying
+
   ```js
   var myMethod = function () {};
   // following both statements are similar
   myMethod();
   myMethod.apply();
   ```
+
+  - The only difference between `call()` and `apply()` is, in `apply()`, the parameter is passed through the parenthesis.
+
+  ```js
+  const wizard = {
+    name: 'Wizard',
+    health: 50,
+    heal(param1, param2) {
+      this.health = this.health + param1 + param2;
+    }
+  };
+
+  const archer = {
+    name: 'Archer',
+    health: 30
+  };
+
+  wizard.heal.apply(archer, [10, 20]);
+
+  console.log(archer);
+  ```
+
+  This will print the same value as previous `call()` method.
+
+  ```bash
+  {
+    name: 'Archer',
+    health: 60
+  }
+  ```
+
 - bind()
+
+  - Except the `call()` and `bind()`, the `bind()` does not invoke the method instantly. Instead, it returns a method that can be invoked later.
+
+  Example
+
+  ```js
+  const wizard = {
+    name: 'Wizard',
+    health: 50,
+    heal(param1, param2) {
+      this.health = this.health + param1 + param2;
+    }
+  };
+
+  const archer = {
+    name: 'Archer',
+    health: 30
+  };
+
+  const archerHeal = wizard.heal.bind(archer, 10, 20);
+  archerHeal();
+
+  console.log(archer);
+  ```
+
+  This will print the same value as previous `call()` or `apply()` method.
+
+  ```bash
+  {
+    name: 'Archer',
+    health: 60
+  }
+  ```
+
+  - bind() and currying
+
+    Let's we have a method that take two numbers and return the multiply result.
+
+    ```js
+    const multiplyMethod = (num1, num2) => {
+      return num1 * num2;
+    };
+    ```
+
+    Now using function bind, we will create two method from the previous method. Both method will provide only one parameter.
+
+    - One will return multiply with 4
+    - Another will return multiply with 10
+
+    ```js
+    let multiplyByTwo = multiplyMethod.bind(this, 4);
+    let multiplyByTen = multiplyMethod.bind(this, 10);
+
+    console.log(multiplyByTwo(2));
+    console.log(multiplyByTen(2));
+    ```
+
+    This will return
+
+    ```bash
+    8
+    20
+    ```
+
+    Using this `bind()` curring, we can easily bind the method and use the flexibility.
 
 ### Benefits
 
@@ -225,3 +391,56 @@ This will return
 foo
 bar
 ```
+
+### Exercise
+
+Let's observe, couple of example
+
+**Example 01**:
+
+```js
+const myObj = {
+  name: 'myName',
+  myMethod() {
+    console.log(this);
+  }
+};
+
+myObj.myMethod();
+```
+
+Here the `this` is the `myObj` itself.
+
+**Example 02**:
+
+```js
+const myObj = {
+  name: 'myName',
+  myMethod() {
+    return function () {
+      return console.log(this);
+    };
+  }
+};
+
+myObj.myMethod()();
+```
+
+Since the return function is not called by the `myObj`, here the `this` object is the `window`. It is using `dynamic scope` instead of `lexical scope`.
+
+**Example 03**:
+
+```js
+const myObj = {
+  name: 'myName',
+  myMethod() {
+    return () => {
+      return console.log(this);
+    };
+  }
+};
+
+myObj.myMethod()();
+```
+
+Since, the `arrow method` strictly maintain the `lexical scope`, here the `this` represent the `myObj`.
