@@ -48,3 +48,19 @@ if (0) {
 ```
 
 Here the `coercion` converts the type of `0` to false.
+
+### Exercise
+
+try to guess the outputs.
+
+```js
+false == '';
+false == [];
+false == {};
+'' == 0;
+'' == [];
+'' == {};
+0 == [];
+0 == {};
+0 == null;
+```
