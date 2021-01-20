@@ -2,6 +2,9 @@
 
 - Javascript uses prototypal inheritance (Java, Python like language use classical inheritance).
 - Inheritance means, an object getting access of another object methods and properties.
+- It helps
+  - Avoid repeating functionalities
+  - Making innovative programming paradigms
 - In Javascript, `class` keyword is a `syntactic sugar`. Internally it uses the `prototypal inheritance`.
 - Both `array` and `function` are objects in Javascript.
 - So any `object`, `array` and `function` can use the property of the parent prototyped chain `object` properties and methods.
