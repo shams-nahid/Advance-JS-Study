@@ -2,6 +2,8 @@
 
 [Notes URL](http://advanced-js.shams-nahid.com/)
 
+To read in the Github, check directories under the `public` directory.
+
 ### Run the APP
 
 **Parser**
