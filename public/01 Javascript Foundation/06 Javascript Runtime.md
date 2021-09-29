@@ -19,3 +19,7 @@ So when a long running async process came up in the call stack, it pass that tas
 Web-api handle the task in background and put the completed task to the call-back-queue.
 
 The event loop always check if the call stack is empty or not. If it is empty then it put the completed task from the call-back-queue to call-stack.
+
+How come we use web api to handle stack overflow. (Calling a method more than stack size, with explanation) (section 24)
+
+How come promise comes before setTimeOut 0, section 25
