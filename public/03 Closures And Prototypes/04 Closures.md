@@ -13,11 +13,11 @@
 
 ```js
 function a() {
-  const grandpa = 'Grandpa';
+  const grandpa = "Grandpa";
   return function b() {
-    const father = 'Father';
+    const father = "Father";
     return function c() {
-      const son = 'Son';
+      const son = "Son";
       return `${grandpa} > ${father} > ${son}`;
     };
   };
@@ -44,12 +44,12 @@ So when garbage collector came to removed the this `grandpa` will not be removed
 
 ```js
 function a() {
-  const grandpa = 'Grandpa';
-  const someRandomVariable = 'random value';
+  const grandpa = "Grandpa";
+  const someRandomVariable = "random value";
   return function b() {
-    const father = 'Father';
+    const father = "Father";
     return function c() {
-      const son = 'Son';
+      const son = "Son";
       return `${grandpa} > ${father} > ${son}`;
     };
   };
@@ -70,7 +70,7 @@ Since the variable `someRandomVariable` is not referenced to any of the method, 
 **Example 03: Storing Reference Parameters**
 
 ```js
-const hoc = num1 => num2 => num1 * num2;
+const hoc = (num1) => (num2) => num1 * num2;
 
 const multiplyByTen = hoc(10);
 
@@ -83,7 +83,7 @@ Here's another example of `closure` is the first parameter `10` is being preserv
 
 ```js
 function myMethod() {
-  const myVar = 'Hello from closures';
+  const myVar = "Hello from closures";
   setTimeout(function () {
     console.log(myVar);
   }, 4000);
@@ -109,7 +109,7 @@ function myMethod() {
   setTimeout(function () {
     console.log(myVar);
   }, 4000);
-  const myVar = 'Hello from closures';
+  const myVar = "Hello from closures";
 }
 
 myMethod();
@@ -121,7 +121,7 @@ This will also print
 Hello from closures
 ```
 
-Since `const` does not hoist, the `myVar` should be a `reference error`. But closure ignore the hoisting and print the `Hello from closures`.
+Since `const` does not hoist, the `myVar` should be a `reference error`. But closure ignore the hoisting and print the `Hello from closures`. Because by the time (after 4 seconds), we call the method, the variable should be persisted in the closure.
 
 ### Advantages
 
@@ -131,7 +131,7 @@ Lets consider a method, that creates a large array. It returns the array element
 
 ```js
 function heavyDuty(index) {
-  const bigArray = new Array(10000).fill('element');
+  const bigArray = new Array(10000).fill("element");
   return bigArray[index];
 }
 
@@ -147,7 +147,7 @@ We can cache the array by the following way using closures.
 
 ```js
 function heavyDuty(index) {
-  const bigArray = new Array(10000).fill('element');
+  const bigArray = new Array(10000).fill("element");
   return function (index) {
     return bigArray[index];
   };
@@ -171,12 +171,12 @@ const makeNuclearButton = () => {
   const totalPeaceTime = () => timeWithoutDestruction;
   const launch = () => {
     timeWithoutDestruction = -1;
-    return 'Booooom!!!!';
+    return "Booooom!!!!";
   };
   setInterval(peaceTime, 1000);
   return {
     launch,
-    totalPeaceTime
+    totalPeaceTime,
   };
 };
 
@@ -188,6 +188,159 @@ Here when we make the object of `makeNuclearButton`, until we invoke `launch` me
 
 The moment we invoke the `launch` method, using `noooo.launch()` the `peaceTime` become `0`.
 
-Now our concern is not had over the `launch` method to everyone.
+Now our concern is not had over the `launch` method to everyone. We simmply remove the `launch` method from the return object.
+
+```js
+const makeNuclearButton = () => {
+  let timeWithoutDestruction = 0;
+  const peaceTime = () => timeWithoutDestruction++;
+  const totalPeaceTime = () => timeWithoutDestruction;
+  const launch = () => {
+    timeWithoutDestruction = -1;
+    return "Booooom!!!!";
+  };
+  setInterval(peaceTime, 1000);
+  return {
+    totalPeaceTime,
+  };
+};
+
+const noooo = makeNuclearButton();
+noooo.totalPeaceTime();
+```
 
 This is a philosophy of `encapsulation` or `least privilege`.
+
+**Exercise**
+
+Lets consider a function `initialize()` and it set some global value. The important thing is it should be called only one time.
+
+```js
+let globalKey;
+
+function initialize() {
+  globalKey = "value";
+  console.log("Global key is set");
+}
+
+initialize();
+initialize();
+initialize();
+```
+
+Here the function is being invoked 3 times. With closure, we need to call it once.
+
+```js
+let globalKey;
+
+function initialize() {
+  let isCalled = false;
+  return () => {
+    if (isCalled) {
+      return;
+    }
+    isCalled = true;
+    globalKey = "value";
+    console.log("Global key is set");
+  };
+}
+
+const startOnce = initialize();
+startOnce();
+startOnce();
+startOnce();
+```
+
+Now, this will be only called once.
+
+Another approach to solve the problem can be, updating the function reference after being initialize at the first time.
+
+```js
+let globalKey;
+
+function initialize() {
+  globalKey = "value";
+  console.log("Global key is set");
+  initialize = () => {
+    console.log("Aboarting! already set the value");
+  };
+}
+
+initialize();
+initialize();
+```
+
+Using IIFE,
+
+```js
+let globalKey;
+
+const initialize = (() => {
+  let called = 0;
+  return () => {
+    if (called) {
+      console.log("Already Set");
+      return;
+    }
+    called = 1;
+    globalKey = "Global Value";
+    console.log("Set the value");
+  };
+})();
+
+initialize();
+initialize();
+initialize();
+```
+
+**Exercise**
+
+In this case,
+
+```js
+const array = [1, 2, 3, 4];
+
+function traverse() {
+  for (var i = 0; i < array.length; i++) {
+    setTimeout(function () {
+      console.log(i);
+    }, 1000);
+  }
+}
+
+traverse();
+```
+
+In this case, the var is used the hoisting and get the laterst index. using `let` instead of `var` can resolve the issue.
+
+```js
+const array = [1, 2, 3, 4];
+
+function traverse() {
+  for (let i = 0; i < array.length; i++) {
+    setTimeout(function () {
+      console.log(i);
+    }, 1000);
+  }
+}
+
+traverse();
+```
+
+Using IIFE and closure,
+
+```js
+const array = [1, 2, 3, 4];
+
+function traverse() {
+  for (var i = 0; i < array.length; i++) {
+    (function (val) {
+      setTimeout(function () {
+        console.log(val);
+      }, 1000);
+    })(i);
+  }
+}
+
+traverse();
+```
