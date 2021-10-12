@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Shams Nahid">
+        <link rel="canonical" href="http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/09 Hoisting/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>09 Hoisting - Advance JS Study Notes</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="../../../css/extra.css" rel="stylesheet">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../..">Advance JS Study Notes</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../..">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">01 Javascript Foundation</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../01 JS Engine/">01 JS Engine</a>
+</li>
+            
+<li >
+    <a href="../02 Writing Optimized Code/">02 Writing Optimized Code</a>
+</li>
+            
+<li >
+    <a href="../03 Call Stack and Memory Heap/">03 Call Stack and Memory Heap</a>
+</li>
+            
+<li >
+    <a href="../04 Memory Leak/">04 Memory Leak</a>
+</li>
+            
+<li >
+    <a href="../05 Single Threaded/">05 Single Threaded</a>
+</li>
+            
+<li >
+    <a href="../06 Javascript Runtime/">06 Javascript Runtime</a>
+</li>
+            
+<li >
+    <a href="../07 Execution Context/">07 Execution Context</a>
+</li>
+            
+<li >
+    <a href="../08 Lexical Environment/">08 Lexical Environment</a>
+</li>
+            
+<li class="active">
+    <a href="./">09 Hoisting</a>
+</li>
+            
+<li >
+    <a href="../10 Fucntion Invoking/">10 Fucntion Invoking</a>
+</li>
+            
+<li >
+    <a href="../11 Scope Chain/">11 Scope Chain</a>
+</li>
+            
+<li >
+    <a href="../12 Weird Syntax/">12 Weird Syntax</a>
+</li>
+            
+<li >
+    <a href="../13 Scope/">13 Scope</a>
+</li>
+            
+<li >
+    <a href="../14 IIFE/">14 IIFE</a>
+</li>
+            
+<li >
+    <a href="../15 this/">15 this</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">02 Javascript Types</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../02 Javascript Types/01 Types/">01 Types</a>
+</li>
+            
+<li >
+    <a href="../../02 Javascript Types/02 Pass By Value vs Reference/">02 Pass By Value vs Reference</a>
+</li>
+            
+<li >
+    <a href="../../02 Javascript Types/03 Type Coercion/">03 Type Coercion</a>
+</li>
+            
+<li >
+    <a href="../../02 Javascript Types/04 JTS/">04 JTS</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">03 Closures And Prototypes</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../03 Closures And Prototypes/01 Functions Are Objects/">01 Functions Are Objects</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/02 Function As First Class Citizen/">02 Function As First Class Citizen</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/03 Higher Order Function/">03 Higher Order Function</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/04 Closures/">04 Closures</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/05 Prototypal Inheritance 01/">05 Prototypal Inheritance 01</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/06 Prototypal Inheritance 02/">06 Prototypal Inheritance 02</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/07 Prototypal Inheritance 03/">07 Prototypal Inheritance 03</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/08 Prototypal Inheritance 04/">08 Prototypal Inheritance 04</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/09 Prototypal Inheritance 05/">09 Prototypal Inheritance 05</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/10 Prototypal Inheritance Exercise/">10 Prototypal Inheritance Exercise</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">04 OOP</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../04 OOP/01 OOP VS FP/">01 OOP VS FP</a>
+</li>
+            
+<li >
+    <a href="../../04 OOP/02 Factory Function/">02 Factory Function</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../08 Lexical Environment/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../10 Fucntion Invoking/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/bmshamsnahid/Advance-JS-Study"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#hoisting">Hoisting</a></li>
+            <li><a href="#avoiding-object-hoisting">Avoiding Object Hoisting</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="hoisting">Hoisting</h2>
+<ul>
+<li>This hoisting feature is resided in the <code>Global Execution Context</code></li>
+<li>Before run the code, this feature hoist the <code>var</code> and <code>function</code></li>
+<li>For <code>var</code> keyword, it allocate a memory in the memory heap with value <code>undefined</code> (Partial Hoisting)</li>
+<li>For <code>function</code>, it hoisted the whole functional definition</li>
+<li>This hoisting feature is applicable for only</li>
+<li><code>var</code> keyword</li>
+<li>Function Declaration</li>
+<li>Functional Expression with <code>var</code> keyword</li>
+<li>Does not applicable for <code>let</code> or <code>const</code> keyword</li>
+</ul>
+<hr />
+<p><strong>Example 01:</strong></p>
+<pre><code class="js">console.log(myVar);
+
+var myVar = 'Hello World!';
+</code></pre>
+
+<p>Here the hosting feature assume there will be a variable named <code>myVar</code> and assigned initial value <code>undefined</code>.</p>
+<p>So this Will return <code>undefined</code>.</p>
+<hr />
+<p><strong>Example 02:</strong></p>
+<pre><code class="js">console.log(myMethod());
+
+function myMethod() {
+  return 'Hello World!!!';
+}
+</code></pre>
+
+<p>Since hoisting feature hoist the function with its definition, this will return <code>Hello World!!!</code>.</p>
+<hr />
+<p><strong>Example 03:</strong></p>
+<pre><code class="js">console.log(myMethod());
+
+(function myMethod() {
+  return 'Hello World!!!';
+});
+</code></pre>
+
+<p>In this case, the hoisting does not find any function keyword, instead it get the <code>(</code>.</p>
+<p>So this Will throw <code>Reference Error</code>.</p>
+<hr />
+<p><strong>Example 04:</strong></p>
+<pre><code class="js">console.log(myMethod);
+
+(function myMethod() {
+  return 'Hello World!!!';
+});
+</code></pre>
+
+<p>Like previous explanation, the hoisting does not get any function, instead it saws the <code>(</code>.</p>
+<p>So this will throw <code>Reference Error</code>.</p>
+<hr />
+<p><strong>Example 05:</strong></p>
+<pre><code class="js">console.log(myValue);
+
+const myValue = 'Hello World';
+</code></pre>
+
+<p>Since <code>ES6</code> feature, <code>let</code> and <code>const</code> does not support the hoisting, this will throw <code>Reference Error</code>.</p>
+<hr />
+<p><strong>Example 06:</strong></p>
+<pre><code class="js">console.log(myValue);
+
+let myValue = 'Hello World';
+</code></pre>
+
+<p>Like previous example, since <code>ES6</code> feature, <code>let</code> and <code>const</code> does not support the hoisting, this will throw <code>Reference Error</code>.</p>
+<hr />
+<p><strong>Example 07:</strong></p>
+<pre><code class="js">console.log(myMethod());
+
+var myMethod = function () {
+  return 'Hello World!!!';
+};
+</code></pre>
+
+<p>Here the hoisting feature hoist the <code>myMethod</code> with value <code>undefined</code>. In <code>console.log</code> it is interpreted something like <code>undefined()</code>. So this will throw <code>Reference Error</code>.</p>
+<hr />
+<p><strong>Example 08:</strong></p>
+<pre><code class="js">console.log(myMethod);
+
+var myMethod = function () {
+  return 'Hello World!!!';
+};
+</code></pre>
+
+<p>In this case, the hoist feature hoist the <code>myMethod</code> and in memory heap, assigned the initial value <code>undefined</code>. So this Will return <code>undefined</code>.</p>
+<hr />
+<p><strong>Example 09:</strong></p>
+<pre><code class="js">console.log(myValue);
+
+var myValue = 1;
+var myValue = 2;
+</code></pre>
+
+<p><em>Hoisting do partial hoisting for the <code>var</code> keyword.</em></p>
+<p>In this case, when the hoisting first get the <code>newValue</code> declaration it put the initial value, <code>undefined</code>. When it again encounter the <code>myValue</code> it just ignore the definition.</p>
+<p>And it will return <code>undefined</code>.</p>
+<hr />
+<p><strong>Example 10:</strong></p>
+<pre><code class="js">console.log(myMethod());
+
+function myMethod() {
+  return 'Initial Encounter';
+}
+
+function myMethod() {
+  return 'Final Encounter';
+}
+</code></pre>
+
+<p>In this case, when the first time <code>myMethod</code> will be encountered, it will hoist the definition which is returning <code>Initial Encounter</code>.</p>
+<p>When the hoisting feature again encounter <code>myMethod</code>, it will again hoist the new definition that is returning <code>Final Encounter</code>.</p>
+<p>So this will return <code>Final Encounter</code>.</p>
+<hr />
+<p><strong>Example 11:</strong></p>
+<pre><code class="js">var myValue = 'Hello World!!';
+
+var myMethod = function () {
+  console.log(`My Value: ${myValue}`);
+
+  var myValue = 'Updated Value';
+
+  console.log(`My Value: ${myValue}`);
+};
+
+myMethod();
+</code></pre>
+
+<p>According to the object hoisting, it happens every time a new execution context is being created.</p>
+<p>Also, every time we invoke a method, a new execution context is being created.</p>
+<p>For the global execution context, the hoisting set <code>myValue</code> and <code>myMethod</code> as <code>undefined</code>.</p>
+<p>Now for the <code>myMethod</code> a new execution context and a new hoisting is created. Here using the hoisting <code>myValue</code> is hoisted as <code>undefined</code>.</p>
+<p>This will return the following 2 lines</p>
+<pre><code class="bash">My Value: undefined
+My Value: Updated Value
+</code></pre>
+
+<hr />
+<p><strong>Example 12:</strong></p>
+<pre><code class="js">var myValue = 'Hello World!!';
+
+var myMethod = function () {
+  console.log(`My Value: ${myValue}`);
+
+  var myNewValue = 'Updated Value';
+
+  console.log(`My Value: ${myNewValue}`);
+};
+
+myMethod();
+</code></pre>
+
+<p>Comparing from the previous example, whenever there is not conflicting of method scoped variable and global hoisted variable, we should get the output as expected.</p>
+<p>This will return the following 2 lines</p>
+<pre><code class="bash">My Value: Hello World!!
+My Value: Updated Value
+</code></pre>
+
+<h3 id="avoiding-object-hoisting">Avoiding Object Hoisting</h3>
+<p>From the example 11 and 12, we see that the out put is not predicted due to the hoisting.</p>
+<p>To make the codebase predicted we can use <code>const</code> and <code>let</code> instead of <code>var</code>.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2021 <a href="https://shams-nahid.com/">Shams Nahid</a>.</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

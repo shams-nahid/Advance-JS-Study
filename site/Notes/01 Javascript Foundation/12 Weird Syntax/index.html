@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Shams Nahid">
+        <link rel="canonical" href="http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/12 Weird Syntax/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>12 Weird Syntax - Advance JS Study Notes</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="../../../css/extra.css" rel="stylesheet">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../..">Advance JS Study Notes</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../..">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">01 Javascript Foundation</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../01 JS Engine/">01 JS Engine</a>
+</li>
+            
+<li >
+    <a href="../02 Writing Optimized Code/">02 Writing Optimized Code</a>
+</li>
+            
+<li >
+    <a href="../03 Call Stack and Memory Heap/">03 Call Stack and Memory Heap</a>
+</li>
+            
+<li >
+    <a href="../04 Memory Leak/">04 Memory Leak</a>
+</li>
+            
+<li >
+    <a href="../05 Single Threaded/">05 Single Threaded</a>
+</li>
+            
+<li >
+    <a href="../06 Javascript Runtime/">06 Javascript Runtime</a>
+</li>
+            
+<li >
+    <a href="../07 Execution Context/">07 Execution Context</a>
+</li>
+            
+<li >
+    <a href="../08 Lexical Environment/">08 Lexical Environment</a>
+</li>
+            
+<li >
+    <a href="../09 Hoisting/">09 Hoisting</a>
+</li>
+            
+<li >
+    <a href="../10 Fucntion Invoking/">10 Fucntion Invoking</a>
+</li>
+            
+<li >
+    <a href="../11 Scope Chain/">11 Scope Chain</a>
+</li>
+            
+<li class="active">
+    <a href="./">12 Weird Syntax</a>
+</li>
+            
+<li >
+    <a href="../13 Scope/">13 Scope</a>
+</li>
+            
+<li >
+    <a href="../14 IIFE/">14 IIFE</a>
+</li>
+            
+<li >
+    <a href="../15 this/">15 this</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">02 Javascript Types</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../02 Javascript Types/01 Types/">01 Types</a>
+</li>
+            
+<li >
+    <a href="../../02 Javascript Types/02 Pass By Value vs Reference/">02 Pass By Value vs Reference</a>
+</li>
+            
+<li >
+    <a href="../../02 Javascript Types/03 Type Coercion/">03 Type Coercion</a>
+</li>
+            
+<li >
+    <a href="../../02 Javascript Types/04 JTS/">04 JTS</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">03 Closures And Prototypes</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../03 Closures And Prototypes/01 Functions Are Objects/">01 Functions Are Objects</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/02 Function As First Class Citizen/">02 Function As First Class Citizen</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/03 Higher Order Function/">03 Higher Order Function</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/04 Closures/">04 Closures</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/05 Prototypal Inheritance 01/">05 Prototypal Inheritance 01</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/06 Prototypal Inheritance 02/">06 Prototypal Inheritance 02</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/07 Prototypal Inheritance 03/">07 Prototypal Inheritance 03</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/08 Prototypal Inheritance 04/">08 Prototypal Inheritance 04</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/09 Prototypal Inheritance 05/">09 Prototypal Inheritance 05</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/10 Prototypal Inheritance Exercise/">10 Prototypal Inheritance Exercise</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">04 OOP</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../04 OOP/01 OOP VS FP/">01 OOP VS FP</a>
+</li>
+            
+<li >
+    <a href="../../04 OOP/02 Factory Function/">02 Factory Function</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../11 Scope Chain/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../13 Scope/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/bmshamsnahid/Advance-JS-Study"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#weird-syntax">Weird Syntax</a></li>
+            <li><a href="#example-1">Example 1</a></li>
+            <li><a href="#example-2">Example 2</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="weird-syntax">Weird Syntax</h2>
+<h3 id="example-1">Example 1</h3>
+<p>Let's observe an example</p>
+<pre><code class="js">function myMethod() {
+  myVal = 50;
+  return myVal;
+}
+
+console.log(myMethod());
+</code></pre>
+
+<p>Here the <code>myValue</code> belongs to the global execution context. Without defining, this is an un-predicted behaviour.</p>
+<p>To restrict this type of un-predicted behaviour, we can use <code>use strict</code> on the top.</p>
+<h3 id="example-2">Example 2</h3>
+<p>Now, let's see another syntax.</p>
+<pre><code class="js">var myMethod = function myMethodName() {
+  return 'Hello World!!';
+};
+</code></pre>
+
+<p>Here the <code>myMethod</code> belongs to the global lexical environment. But the <code>myMethodName</code> belongs to the functional lexical environment.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2021 <a href="https://shams-nahid.com/">Shams Nahid</a>.</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

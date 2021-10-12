@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Shams Nahid">
+        <link rel="canonical" href="http://advanced-js.shams-nahid.com/Notes/03 Closures And Prototypes/04 Closures/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>04 Closures - Advance JS Study Notes</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="../../../css/extra.css" rel="stylesheet">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../..">Advance JS Study Notes</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../..">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">01 Javascript Foundation</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../01 Javascript Foundation/01 JS Engine/">01 JS Engine</a>
+</li>
+            
+<li >
+    <a href="../../01 Javascript Foundation/02 Writing Optimized Code/">02 Writing Optimized Code</a>
+</li>
+            
+<li >
+    <a href="../../01 Javascript Foundation/03 Call Stack and Memory Heap/">03 Call Stack and Memory Heap</a>
+</li>
+            
+<li >
+    <a href="../../01 Javascript Foundation/04 Memory Leak/">04 Memory Leak</a>
+</li>
+            
+<li >
+    <a href="../../01 Javascript Foundation/05 Single Threaded/">05 Single Threaded</a>
+</li>
+            
+<li >
+    <a href="../../01 Javascript Foundation/06 Javascript Runtime/">06 Javascript Runtime</a>
+</li>
+            
+<li >
+    <a href="../../01 Javascript Foundation/07 Execution Context/">07 Execution Context</a>
+</li>
+            
+<li >
+    <a href="../../01 Javascript Foundation/08 Lexical Environment/">08 Lexical Environment</a>
+</li>
+            
+<li >
+    <a href="../../01 Javascript Foundation/09 Hoisting/">09 Hoisting</a>
+</li>
+            
+<li >
+    <a href="../../01 Javascript Foundation/10 Fucntion Invoking/">10 Fucntion Invoking</a>
+</li>
+            
+<li >
+    <a href="../../01 Javascript Foundation/11 Scope Chain/">11 Scope Chain</a>
+</li>
+            
+<li >
+    <a href="../../01 Javascript Foundation/12 Weird Syntax/">12 Weird Syntax</a>
+</li>
+            
+<li >
+    <a href="../../01 Javascript Foundation/13 Scope/">13 Scope</a>
+</li>
+            
+<li >
+    <a href="../../01 Javascript Foundation/14 IIFE/">14 IIFE</a>
+</li>
+            
+<li >
+    <a href="../../01 Javascript Foundation/15 this/">15 this</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">02 Javascript Types</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../02 Javascript Types/01 Types/">01 Types</a>
+</li>
+            
+<li >
+    <a href="../../02 Javascript Types/02 Pass By Value vs Reference/">02 Pass By Value vs Reference</a>
+</li>
+            
+<li >
+    <a href="../../02 Javascript Types/03 Type Coercion/">03 Type Coercion</a>
+</li>
+            
+<li >
+    <a href="../../02 Javascript Types/04 JTS/">04 JTS</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">03 Closures And Prototypes</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../01 Functions Are Objects/">01 Functions Are Objects</a>
+</li>
+            
+<li >
+    <a href="../02 Function As First Class Citizen/">02 Function As First Class Citizen</a>
+</li>
+            
+<li >
+    <a href="../03 Higher Order Function/">03 Higher Order Function</a>
+</li>
+            
+<li class="active">
+    <a href="./">04 Closures</a>
+</li>
+            
+<li >
+    <a href="../05 Prototypal Inheritance 01/">05 Prototypal Inheritance 01</a>
+</li>
+            
+<li >
+    <a href="../06 Prototypal Inheritance 02/">06 Prototypal Inheritance 02</a>
+</li>
+            
+<li >
+    <a href="../07 Prototypal Inheritance 03/">07 Prototypal Inheritance 03</a>
+</li>
+            
+<li >
+    <a href="../08 Prototypal Inheritance 04/">08 Prototypal Inheritance 04</a>
+</li>
+            
+<li >
+    <a href="../09 Prototypal Inheritance 05/">09 Prototypal Inheritance 05</a>
+</li>
+            
+<li >
+    <a href="../10 Prototypal Inheritance Exercise/">10 Prototypal Inheritance Exercise</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">04 OOP</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../04 OOP/01 OOP VS FP/">01 OOP VS FP</a>
+</li>
+            
+<li >
+    <a href="../../04 OOP/02 Factory Function/">02 Factory Function</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../03 Higher Order Function/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../05 Prototypal Inheritance 01/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/bmshamsnahid/Advance-JS-Study"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#closures">Closures</a></li>
+            <li><a href="#advantages">Advantages</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="closures">Closures</h2>
+<ul>
+<li>Closures is the combination of <code>function</code> and <code>lexical scope</code></li>
+<li><code>Function</code><ul>
+<li>Since they are first class citizen in JS,</li>
+<li>We can pass function as data</li>
+<li>We can also return function as data</li>
+</ul>
+</li>
+<li><code>Lexical Scope</code><ul>
+<li>Means JS engine knows where the code is written before we even run the code, what variable each function has accessed to.</li>
+</ul>
+</li>
+<li>Closure allows a method to access variables of methods, even though the method left the stack</li>
+</ul>
+<p><strong>Example 01: Storing Local Properties</strong></p>
+<pre><code class="js">function a() {
+  const grandpa = &quot;Grandpa&quot;;
+  return function b() {
+    const father = &quot;Father&quot;;
+    return function c() {
+      const son = &quot;Son&quot;;
+      return `${grandpa} &gt; ${father} &gt; ${son}`;
+    };
+  };
+}
+
+const one = a();
+// 10 years later...
+one()();
+</code></pre>
+
+<p>This will return</p>
+<pre><code class="bash">Grandpa &gt; Father &gt; Son
+</code></pre>
+
+<p>Here after we invoke the <code>a()</code> the <code>a()</code> method should be popped out from the <code>scope</code>. Also its property <code>grandpa</code> should be popped out from the stack.</p>
+<p>Since the reference of the <code>grandpa</code> is used in the <code>c()</code>, the <code>closure</code> will store these.</p>
+<p>So when garbage collector came to removed the this <code>grandpa</code> will not be removed from the memory.</p>
+<p><strong>Example 02: Storing Local Properties</strong></p>
+<pre><code class="js">function a() {
+  const grandpa = &quot;Grandpa&quot;;
+  const someRandomVariable = &quot;random value&quot;;
+  return function b() {
+    const father = &quot;Father&quot;;
+    return function c() {
+      const son = &quot;Son&quot;;
+      return `${grandpa} &gt; ${father} &gt; ${son}`;
+    };
+  };
+}
+
+const one = a();
+one()();
+</code></pre>
+
+<p>This will return</p>
+<pre><code class="bash">Grandpa &gt; Father &gt; Son
+</code></pre>
+
+<p>Since the variable <code>someRandomVariable</code> is not referenced to any of the method, it will be removed by the <code>garbage collector</code>.</p>
+<p><strong>Example 03: Storing Reference Parameters</strong></p>
+<pre><code class="js">const hoc = (num1) =&gt; (num2) =&gt; num1 * num2;
+
+const multiplyByTen = hoc(10);
+
+multiplyByTen(5);
+</code></pre>
+
+<p>Here's another example of <code>closure</code> is the first parameter <code>10</code> is being preserved from the <code>garbage collector</code>. So we can use even though the first arrow method <code>hoc()</code> is being removed from the <code>lexical scope</code></p>
+<p><strong>Example 03: With Event Loop</strong></p>
+<pre><code class="js">function myMethod() {
+  const myVar = &quot;Hello from closures&quot;;
+  setTimeout(function () {
+    console.log(myVar);
+  }, 4000);
+}
+
+myMethod();
+</code></pre>
+
+<p>This will print</p>
+<pre><code class="bash">Hello from closures
+</code></pre>
+
+<p>Here we pass the <code>setTimeout</code> part to the <code>web-api</code> and start a timer of <code>4 seconds</code>. When <code>4 seconds</code> time is over code is return to the <code>call-back queue</code>, and wait for the <code>empty call-stack</code>.</p>
+<p>When it goes to the call stack, the <code>myMethod</code> should be removed from the stack. But the <code>myVar</code> will be kept in the <code>closure</code>, as it is referenced in the <code>setTimeout</code> method.</p>
+<p><strong>Example 03: Ignore Hoisting</strong></p>
+<pre><code class="js">function myMethod() {
+  setTimeout(function () {
+    console.log(myVar);
+  }, 4000);
+  const myVar = &quot;Hello from closures&quot;;
+}
+
+myMethod();
+</code></pre>
+
+<p>This will also print</p>
+<pre><code class="bash">Hello from closures
+</code></pre>
+
+<p>Since <code>const</code> does not hoist, the <code>myVar</code> should be a <code>reference error</code>. But closure ignore the hoisting and print the <code>Hello from closures</code>. Because by the time (after 4 seconds), we call the method, the variable should be persisted in the closure.</p>
+<h3 id="advantages">Advantages</h3>
+<p><strong>Example: Memory Efficiency</strong></p>
+<p>Lets consider a method, that creates a large array. It returns the array elements by the index we pass.</p>
+<pre><code class="js">function heavyDuty(index) {
+  const bigArray = new Array(10000).fill(&quot;element&quot;);
+  return bigArray[index];
+}
+
+heavyDuty(10);
+heavyDuty(5000);
+</code></pre>
+
+<p>Here every time we invoke the method <code>heavyDuty</code> method, a new array is being created with <code>10000</code> items and return the element of the desired index.</p>
+<p>In this case repeatedly after each call we have to generate an array of <code>10000</code> elements.</p>
+<p>We can cache the array by the following way using closures.</p>
+<pre><code class="js">function heavyDuty(index) {
+  const bigArray = new Array(10000).fill(&quot;element&quot;);
+  return function (index) {
+    return bigArray[index];
+  };
+}
+
+const getElement = heavyDuty();
+getElement(10);
+getElement(5000);
+</code></pre>
+
+<p>In this way, we do not pollute the global scope. We create the array once and invoke the element by index multiple time.</p>
+<p><strong>Example: Memory Encapsulation</strong></p>
+<p>Let's consider a method.</p>
+<pre><code class="js">const makeNuclearButton = () =&gt; {
+  let timeWithoutDestruction = 0;
+  const peaceTime = () =&gt; timeWithoutDestruction++;
+  const totalPeaceTime = () =&gt; timeWithoutDestruction;
+  const launch = () =&gt; {
+    timeWithoutDestruction = -1;
+    return &quot;Booooom!!!!&quot;;
+  };
+  setInterval(peaceTime, 1000);
+  return {
+    launch,
+    totalPeaceTime,
+  };
+};
+
+const noooo = makeNuclearButton();
+noooo.totalPeaceTime();
+</code></pre>
+
+<p>Here when we make the object of <code>makeNuclearButton</code>, until we invoke <code>launch</code> method, the <code>peaceTime</code> is increasing.</p>
+<p>The moment we invoke the <code>launch</code> method, using <code>noooo.launch()</code> the <code>peaceTime</code> become <code>0</code>.</p>
+<p>Now our concern is not had over the <code>launch</code> method to everyone. We simmply remove the <code>launch</code> method from the return object.</p>
+<pre><code class="js">const makeNuclearButton = () =&gt; {
+  let timeWithoutDestruction = 0;
+  const peaceTime = () =&gt; timeWithoutDestruction++;
+  const totalPeaceTime = () =&gt; timeWithoutDestruction;
+  const launch = () =&gt; {
+    timeWithoutDestruction = -1;
+    return &quot;Booooom!!!!&quot;;
+  };
+  setInterval(peaceTime, 1000);
+  return {
+    totalPeaceTime,
+  };
+};
+
+const noooo = makeNuclearButton();
+noooo.totalPeaceTime();
+</code></pre>
+
+<p>This is a philosophy of <code>encapsulation</code> or <code>least privilege</code>.</p>
+<p><strong>Exercise</strong></p>
+<p>Lets consider a function <code>initialize()</code> and it set some global value. The important thing is it should be called only one time.</p>
+<pre><code class="js">let globalKey;
+
+function initialize() {
+  globalKey = &quot;value&quot;;
+  console.log(&quot;Global key is set&quot;);
+}
+
+initialize();
+initialize();
+initialize();
+</code></pre>
+
+<p>Here the function is being invoked 3 times. With closure, we need to call it once.</p>
+<pre><code class="js">let globalKey;
+
+function initialize() {
+  let isCalled = false;
+  return () =&gt; {
+    if (isCalled) {
+      return;
+    }
+    isCalled = true;
+    globalKey = &quot;value&quot;;
+    console.log(&quot;Global key is set&quot;);
+  };
+}
+
+const startOnce = initialize();
+startOnce();
+startOnce();
+startOnce();
+</code></pre>
+
+<p>Now, this will be only called once.</p>
+<p>Another approach to solve the problem can be, updating the function reference after being initialize at the first time.</p>
+<pre><code class="js">let globalKey;
+
+function initialize() {
+  globalKey = &quot;value&quot;;
+  console.log(&quot;Global key is set&quot;);
+  initialize = () =&gt; {
+    console.log(&quot;Aboarting! already set the value&quot;);
+  };
+}
+
+initialize();
+initialize();
+</code></pre>
+
+<p>Using IIFE,</p>
+<pre><code class="js">let globalKey;
+
+const initialize = (() =&gt; {
+  let called = 0;
+  return () =&gt; {
+    if (called) {
+      console.log(&quot;Already Set&quot;);
+      return;
+    }
+    called = 1;
+    globalKey = &quot;Global Value&quot;;
+    console.log(&quot;Set the value&quot;);
+  };
+})();
+
+initialize();
+initialize();
+initialize();
+</code></pre>
+
+<p><strong>Exercise</strong></p>
+<p>In this case,</p>
+<pre><code class="js">const array = [1, 2, 3, 4];
+
+function traverse() {
+  for (var i = 0; i &lt; array.length; i++) {
+    setTimeout(function () {
+      console.log(i);
+    }, 1000);
+  }
+}
+
+traverse();
+</code></pre>
+
+<p>In this case, the var is used the hoisting and get the laterst index. using <code>let</code> instead of <code>var</code> can resolve the issue.</p>
+<pre><code class="js">const array = [1, 2, 3, 4];
+
+function traverse() {
+  for (let i = 0; i &lt; array.length; i++) {
+    setTimeout(function () {
+      console.log(i);
+    }, 1000);
+  }
+}
+
+traverse();
+</code></pre>
+
+<p>Using IIFE and closure,</p>
+<pre><code class="js">const array = [1, 2, 3, 4];
+
+function traverse() {
+  for (var i = 0; i &lt; array.length; i++) {
+    (function (val) {
+      setTimeout(function () {
+        console.log(val);
+      }, 1000);
+    })(i);
+  }
+}
+
+traverse();
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2021 <a href="https://shams-nahid.com/">Shams Nahid</a>.</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,41 +1,25 @@
-## Advance Javascript Study [Rendering Markdown Notes]
+## [Advanced Javascript Study Notes Doc](http://advanced-js.shams-nahid.com/)
 
-[Notes URL](http://advanced-js.shams-nahid.com/)
+---
 
-To read in the Github, check directories under the `public` directory.
+### Contents
 
-### Run the APP
+- JS Compiler
+- Types in Javascript
+- Closures
+- Prototypes
+- OOS in JavaScript
 
-**Parser**
+### To Run Locally
 
-- Clone the repo
-- Go to root directory and install dependencies
-
-```bash
-yarn
-```
-
-- Now run the blog parser by
+Install `mkdocs`
 
 ```bash
-yarn dev
+sudo apt install mkdocs
 ```
 
-This will parse the content and made them available in `/tree` endpoint.
-
-**UI**
-
-- Go to `/ui`
-- Install dependencies
+Run local machine,
 
 ```bash
-yarn
+mkdocs serve
 ```
-
-- Now run the `ui` by
-
-```bash
-yarn start
-```
-
-This will load the `UI` in `http://localhost:3000`

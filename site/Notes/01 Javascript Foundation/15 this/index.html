@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Shams Nahid">
+        <link rel="canonical" href="http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/15 this/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>15 this - Advance JS Study Notes</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="../../../css/extra.css" rel="stylesheet">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../..">Advance JS Study Notes</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../..">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">01 Javascript Foundation</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../01 JS Engine/">01 JS Engine</a>
+</li>
+            
+<li >
+    <a href="../02 Writing Optimized Code/">02 Writing Optimized Code</a>
+</li>
+            
+<li >
+    <a href="../03 Call Stack and Memory Heap/">03 Call Stack and Memory Heap</a>
+</li>
+            
+<li >
+    <a href="../04 Memory Leak/">04 Memory Leak</a>
+</li>
+            
+<li >
+    <a href="../05 Single Threaded/">05 Single Threaded</a>
+</li>
+            
+<li >
+    <a href="../06 Javascript Runtime/">06 Javascript Runtime</a>
+</li>
+            
+<li >
+    <a href="../07 Execution Context/">07 Execution Context</a>
+</li>
+            
+<li >
+    <a href="../08 Lexical Environment/">08 Lexical Environment</a>
+</li>
+            
+<li >
+    <a href="../09 Hoisting/">09 Hoisting</a>
+</li>
+            
+<li >
+    <a href="../10 Fucntion Invoking/">10 Fucntion Invoking</a>
+</li>
+            
+<li >
+    <a href="../11 Scope Chain/">11 Scope Chain</a>
+</li>
+            
+<li >
+    <a href="../12 Weird Syntax/">12 Weird Syntax</a>
+</li>
+            
+<li >
+    <a href="../13 Scope/">13 Scope</a>
+</li>
+            
+<li >
+    <a href="../14 IIFE/">14 IIFE</a>
+</li>
+            
+<li class="active">
+    <a href="./">15 this</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">02 Javascript Types</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../02 Javascript Types/01 Types/">01 Types</a>
+</li>
+            
+<li >
+    <a href="../../02 Javascript Types/02 Pass By Value vs Reference/">02 Pass By Value vs Reference</a>
+</li>
+            
+<li >
+    <a href="../../02 Javascript Types/03 Type Coercion/">03 Type Coercion</a>
+</li>
+            
+<li >
+    <a href="../../02 Javascript Types/04 JTS/">04 JTS</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">03 Closures And Prototypes</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../03 Closures And Prototypes/01 Functions Are Objects/">01 Functions Are Objects</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/02 Function As First Class Citizen/">02 Function As First Class Citizen</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/03 Higher Order Function/">03 Higher Order Function</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/04 Closures/">04 Closures</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/05 Prototypal Inheritance 01/">05 Prototypal Inheritance 01</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/06 Prototypal Inheritance 02/">06 Prototypal Inheritance 02</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/07 Prototypal Inheritance 03/">07 Prototypal Inheritance 03</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/08 Prototypal Inheritance 04/">08 Prototypal Inheritance 04</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/09 Prototypal Inheritance 05/">09 Prototypal Inheritance 05</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/10 Prototypal Inheritance Exercise/">10 Prototypal Inheritance Exercise</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">04 OOP</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../04 OOP/01 OOP VS FP/">01 OOP VS FP</a>
+</li>
+            
+<li >
+    <a href="../../04 OOP/02 Factory Function/">02 Factory Function</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../14 IIFE/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../../02 Javascript Types/01 Types/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/bmshamsnahid/Advance-JS-Study"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#this">this</a></li>
+            <li><a href="#manipulating-the-this-context">Manipulating the this context</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#exercise">Exercise</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="this">this</h2>
+<ul>
+<li><code>this</code> is the object, the function is property of</li>
+</ul>
+<pre><code class="js">obj.someFunc(this);
+</code></pre>
+
+<p>Here <code>obj</code> is the <code>this</code>.</p>
+<p>Another example,</p>
+<pre><code class="js">const myObject = {
+  name: 'foo',
+  task: function () {
+    return `This is ${this.name} task.`;
+  }
+};
+
+myObject.task();
+</code></pre>
+
+<p>This will return the text <code>This is foo task.</code>.</p>
+<p>By definition, here <code>this</code> refers to the object <code>myObject</code>. The function of <code>task</code> is the property of <code>myObject</code>.</p>
+<ul>
+<li>In global scope, <code>this</code> is the <code>window</code> object</li>
+</ul>
+<p>In global scope, if we define a function</p>
+<pre><code class="js">function a() {
+  console.log(this);
+}
+</code></pre>
+
+<p>It will print the <code>window</code> object.</p>
+<p>Since, the <code>a()</code> method is <code>window.a()</code>, so according to our first definition, for <code>a()</code>, <code>this</code> is the <code>window</code> object.</p>
+<ul>
+<li>When considering method, <code>this</code> means, who called the method</li>
+</ul>
+<p>Example</p>
+<pre><code class="js">const a = function () {
+  console.log('For a, this is ', this);
+  const b = function () {
+    console.log('For b, this is ', this);
+    const c = {
+      hi: function () {
+        console.log('For c, this is ', this);
+      }
+    };
+    c.hi();
+  };
+};
+
+a();
+</code></pre>
+
+<p>In this case, both <code>a</code> and <code>b</code> has the <code>window</code> object as <code>this</code>.</p>
+<p>And for <code>c</code>, since it is invoked by <code>c</code>, then, the <code>this</code> is the <code>c</code> object.</p>
+<p>Now, query might be, how <code>b()</code> has the <code>this</code> object <code>window</code>, not the <code>a</code>. Because <code>b()</code> is not invoked by in similar way <code>a.b()</code>. Instead, it is invoked like <code>window.a(b())</code></p>
+<ul>
+<li><code>this</code> is not lexically scoped, it depends on how it is called (dynamically scoped).</li>
+</ul>
+<p>Example</p>
+<pre><code class="js">const obj = {
+  name: 'Billy',
+  sing() {
+    console.log('a', this);
+    var anotherMethod = function () {
+      console.log('b', this);
+    };
+    anotherMethod();
+  }
+};
+
+obj.sing();
+</code></pre>
+
+<p>Here for <code>a</code>, the <code>this</code> context is <code>obj</code>.</p>
+<p>For <code>b</code>, the <code>this</code> context should be <code>obj</code>. But since, <code>this</code> is not lexically scoped and follow method calls, <code>b</code> has the <code>this</code> context of <code>window</code>.</p>
+<p>This is why <code>this</code> follows the <code>dynamic scoped</code> instead of <code>lexical scoped</code>.</p>
+<p>To solve this <code>dynamic scope</code> issue, we can use <code>arrow method</code>. <code>Arrow method</code> is bound to the <code>lexical scoped</code>.</p>
+<p>Example</p>
+<pre><code class="js">const obj = {
+  name: 'Billy',
+  sing() {
+    console.log('a', this);
+    var anotherMethod = () =&gt; {
+      console.log('b', this);
+    };
+    anotherMethod();
+  }
+};
+
+obj.sing();
+</code></pre>
+
+<p>Here both <code>a</code> and <code>b</code> has the <code>this</code> context of <code>obj</code>.</p>
+<p>Another was to make the <code>this</code> to <code>lexical scoped</code> is using <code>bind()</code> method.</p>
+<p>Example</p>
+<pre><code class="js">const obj = {
+  name: 'Billy',
+  sing() {
+    console.log('a', this);
+    var anotherMethod = function () {
+      console.log('b', this);
+    };
+    return anotherMethod.bind(this);
+  }
+};
+
+obj.sing()();
+</code></pre>
+
+<p>Here also <code>a</code> and <code>b</code> has the <code>this</code> context of <code>obj</code>. This was the go to method before we using the <code>arrow method</code>.</p>
+<p>Another way to use the <code>this</code> context of the <code>lexical scope</code> is store the <code>this</code> context of the <code>lexical scope</code>.</p>
+<pre><code class="js">const obj = {
+  name: 'Billy',
+  sing() {
+    console.log('a', this);
+    var self = this;
+    var anotherMethod = function () {
+      console.log('b', self);
+    };
+    anotherMethod();
+  }
+};
+
+obj.sing();
+</code></pre>
+
+<p>Here both <code>a</code> and <code>b</code> have the <code>this</code> context of <code>obj</code>.</p>
+<h3 id="manipulating-the-this-context">Manipulating the <code>this</code> context</h3>
+<p>We can manipulate the <code>this</code> keyword using the following methods</p>
+<ul>
+<li>
+<p>call()</p>
+</li>
+<li>
+<p>Every time we invoke a method, <code>call()</code> method is being invoked internally.
+    <code>js
+    var myMethod = function () {};
+    // following both statements are similar
+    myMethod();
+    myMethod.call();</code></p>
+</li>
+</ul>
+<p>Let's took an method using the call method.</p>
+<p>```js
+  const wizard = {
+    name: 'Wizard',
+    health: 50,
+    heal() {
+      this.health = 100;
+    }
+  };</p>
+<p>const archer = {
+    name: 'Archer',
+    health: 30
+  };</p>
+<p>wizard.heal.call(archer);</p>
+<p>console.log(archer);
+  ```</p>
+<p>This will print</p>
+<p><code>bash
+  {
+    name: 'Archer',
+    health: 100
+  }</code></p>
+<p>Here the health property is same as the <code>wizard</code> object.</p>
+<p>Now, let see another example of passing parameter using the <code>call</code> method.</p>
+<p>```js
+  const wizard = {
+    name: 'Wizard',
+    health: 50,
+    heal(param1, param2) {
+      this.health = this.health + param1 + param2;
+    }
+  };</p>
+<p>const archer = {
+    name: 'Archer',
+    health: 30
+  };</p>
+<p>wizard.heal.call(archer, 10, 20);</p>
+<p>console.log(archer);
+  ```</p>
+<p>This will add the params <code>10</code> and <code>20</code> with it existing value <code>30</code>.</p>
+<p>So the printed value be,</p>
+<p><code>bash
+  {
+    name: 'Archer',
+    health: 60
+  }</code></p>
+<ul>
+<li>
+<p>apply()</p>
+</li>
+<li>
+<p><code>apply()</code> is similar to <code>call()</code></p>
+</li>
+<li>It uses <code>call()</code> underlying</li>
+</ul>
+<p><code>js
+  var myMethod = function () {};
+  // following both statements are similar
+  myMethod();
+  myMethod.apply();</code></p>
+<ul>
+<li>The only difference between <code>call()</code> and <code>apply()</code> is, in <code>apply()</code>, the parameter is passed through the parenthesis.</li>
+</ul>
+<p>```js
+  const wizard = {
+    name: 'Wizard',
+    health: 50,
+    heal(param1, param2) {
+      this.health = this.health + param1 + param2;
+    }
+  };</p>
+<p>const archer = {
+    name: 'Archer',
+    health: 30
+  };</p>
+<p>wizard.heal.apply(archer, [10, 20]);</p>
+<p>console.log(archer);
+  ```</p>
+<p>This will print the same value as previous <code>call()</code> method.</p>
+<p><code>bash
+  {
+    name: 'Archer',
+    health: 60
+  }</code></p>
+<ul>
+<li>
+<p>bind()</p>
+</li>
+<li>
+<p>Except the <code>call()</code> and <code>bind()</code>, the <code>bind()</code> does not invoke the method instantly. Instead, it returns a method that can be invoked later.</p>
+</li>
+</ul>
+<p>Example</p>
+<p>```js
+  const wizard = {
+    name: 'Wizard',
+    health: 50,
+    heal(param1, param2) {
+      this.health = this.health + param1 + param2;
+    }
+  };</p>
+<p>const archer = {
+    name: 'Archer',
+    health: 30
+  };</p>
+<p>const archerHeal = wizard.heal.bind(archer, 10, 20);
+  archerHeal();</p>
+<p>console.log(archer);
+  ```</p>
+<p>This will print the same value as previous <code>call()</code> or <code>apply()</code> method.</p>
+<p><code>bash
+  {
+    name: 'Archer',
+    health: 60
+  }</code></p>
+<ul>
+<li>
+<p>bind() and currying</p>
+<p>Let's we have a method that take two numbers and return the multiply result.</p>
+<p><code>js
+const multiplyMethod = (num1, num2) =&gt; {
+  return num1 * num2;
+};</code></p>
+<p>Now using function bind, we will create two method from the previous method. Both method will provide only one parameter.</p>
+<ul>
+<li>One will return multiply with 4</li>
+<li>Another will return multiply with 10</li>
+</ul>
+<p>```js
+let multiplyByTwo = multiplyMethod.bind(this, 4);
+let multiplyByTen = multiplyMethod.bind(this, 10);</p>
+<p>console.log(multiplyByTwo(2));
+console.log(multiplyByTen(2));
+```</p>
+<p>This will return</p>
+<p><code>bash
+8
+20</code></p>
+<p>Using this <code>bind()</code> curring, we can easily bind the method and use the flexibility.</p>
+</li>
+</ul>
+<h3 id="benefits">Benefits</h3>
+<ul>
+<li>Allow methods and properties of object itself</li>
+</ul>
+<p>Example</p>
+<pre><code class="js">const myObject = {
+  name: 'foo',
+  task: function () {
+    return `Do ${this.name} task.`;
+  },
+  doTask: function () {
+    return `Do ${this.task()}`;
+  }
+};
+
+myObject.doTask();
+</code></pre>
+
+<p>This will return <code>Do foo task.</code></p>
+<ul>
+<li>Execute same code for multiple objects</li>
+</ul>
+<p>Example</p>
+<pre><code class="js">function showMyName() {
+  console.log(this.name);
+}
+
+const foo = {
+  name: 'foo',
+  showMyName
+};
+
+const bar = {
+  name: 'foo',
+  showMyName
+};
+
+foo();
+bar();
+</code></pre>
+
+<p>This will return</p>
+<pre><code class="bash">foo
+bar
+</code></pre>
+
+<h3 id="exercise">Exercise</h3>
+<p>Let's observe, couple of example</p>
+<p><strong>Example 01</strong>:</p>
+<pre><code class="js">const myObj = {
+  name: 'myName',
+  myMethod() {
+    console.log(this);
+  }
+};
+
+myObj.myMethod();
+</code></pre>
+
+<p>Here the <code>this</code> is the <code>myObj</code> itself.</p>
+<p><strong>Example 02</strong>:</p>
+<pre><code class="js">const myObj = {
+  name: 'myName',
+  myMethod() {
+    return function () {
+      return console.log(this);
+    };
+  }
+};
+
+myObj.myMethod()();
+</code></pre>
+
+<p>Since the return function is not called by the <code>myObj</code>, here the <code>this</code> object is the <code>window</code>. It is using <code>dynamic scope</code> instead of <code>lexical scope</code>.</p>
+<p><strong>Example 03</strong>:</p>
+<pre><code class="js">const myObj = {
+  name: 'myName',
+  myMethod() {
+    return () =&gt; {
+      return console.log(this);
+    };
+  }
+};
+
+myObj.myMethod()();
+</code></pre>
+
+<p>Since, the <code>arrow method</code> strictly maintain the <code>lexical scope</code>, here the <code>this</code> represent the <code>myObj</code>.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2021 <a href="https://shams-nahid.com/">Shams Nahid</a>.</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
