@@ -15,7 +15,7 @@ console.log(myMethod());
 
 Here the `myValue` belongs to the global execution context. Without defining, this is an un-predicted behaviour.
 
-To restrict this type of un-predicted behaviour, we can use `use strict` on the top.
+To restrict this type of un-predicted behavior, we can use `use strict` on the top.
 
 ### Example 2
 
