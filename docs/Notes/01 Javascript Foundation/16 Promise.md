@@ -7,6 +7,13 @@
   - Fulfilled / resolved
   - Rejected
   - Pending
+- Promise is Javascript native property and has own queue called `Job Queue` or `Micro Task Queue`
+- This `Job Queue` or `Micro Task Queue` is not part of `Call Back Queue` in `Event Loop`
+- `Job Queue` or `Micro Task Queue` has higher priority than `Call Back Queue` aka `Event Loop` checks `Job Queue` before `Callback Queue`
+- Promise can run 3 ways,
+  - **Parallel**: All promises will run parallel
+  - **Sequential**: Promises will run one after another
+  - **Race**: Promise will be resolved, when any of the promise in list is being resolved.
 
 ## Promise Structure
 
@@ -220,3 +227,114 @@ Promise.all([promise1, promise2])
 We will get output `Something Went Wrong`. Here the first promise resolved, but second promise is being `rejected`.
 
 > In `Promise.all` all promise needs to be resolved, otherwise the chain will jump to the `catch` section.
+
+## Promise.allSettled
+
+Returns the result of all promises even if some fails.
+
+```js
+const promise1 = new Promise(resolve =>
+  setTimeout(resolve('This is resolve'), 3000)
+);
+
+const promise2 = new Promise((resolve, reject) =>
+  setTimeout(reject('Something went wrong!'), 3000)
+);
+
+Promise.allSettled([promise1, promise2]).then(data => console.log(data));
+```
+
+In this case, we will get output of all promises, resolved and rejected,
+
+```
+[
+    {
+        "status": "fulfilled",
+        "value": "This is resolve"
+    },
+    {
+        "status": "rejected",
+        "reason": "Something went wrong!"
+    }
+]
+```
+
+## Promise.any
+
+It resolves if any of the promise is being resolved first. If none of promise able to resolved, only then the
+
+## Parallel Promise Example
+
+In parallel promise, we will get the resolved result when all the promises are being resolved.
+
+```js
+const promisify = (item, delay) =>
+  new Promise(resolve => setTimeout(() => resolve(item), delay));
+
+const a = () => promisify('a', 100);
+const b = () => promisify('b', 5000);
+const c = () => promisify('c', 3000);
+
+async function parallel() {
+  const promises = [a(), b(), c()];
+  const [output1, output2, output3] = await Promise.all(promises);
+  return `parallel is done: ${output1} ${output2} ${output3}`;
+}
+
+async function parallel() {
+  const promises = [a(), b(), c()];
+  const [output1, output2, output3] = await Promise.all(promises);
+  return `parallel is done: ${output1} ${output2} ${output3}`;
+}
+
+parallel().then(console.log);
+```
+
+After 5 seconds, we will get the output of `parallel is done: a b c`.
+
+## Race Promise Example
+
+In race promise, we will get only one resolved result from the first resolved promise.
+
+```js
+const promisify = (item, delay) =>
+  new Promise(resolve => setTimeout(() => resolve(item), delay));
+
+const a = () => promisify('a', 100);
+const b = () => promisify('b', 5000);
+const c = () => promisify('c', 3000);
+
+async function race() {
+  const promises = [a(), b(), c()];
+  const output = await Promise.race(promises);
+  return `race is done: ${output}`;
+}
+
+race().then(console.log);
+```
+
+Since promise `a` will be resolved earlier, after 100 milliseconds, we will get the output of `race is done: a`.
+
+## Sequence Promise Example
+
+In sequence promise, all the promises will be executed one after another. We will get the resolved result when all the promise is being resolved.
+
+```js
+const promisify = (item, delay) =>
+  new Promise(resolve => setTimeout(() => resolve(item), delay));
+
+const a = () => promisify('a', 100);
+const b = () => promisify('b', 5000);
+const c = () => promisify('c', 3000);
+
+async function sequence() {
+  const output1 = await a();
+  const output2 = await b();
+  const output3 = await c();
+  return `sequence is done: ${output1} ${output2} ${output3}`;
+}
+
+sequence().then(console.log);
+```
+
+Here all the promises will be resolved one after another and we will get a output of `sequence is done: a b c` after 8.01 seconds later.
