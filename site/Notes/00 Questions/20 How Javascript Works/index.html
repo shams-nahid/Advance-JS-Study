@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="author" content="Shams Nahid">
-        <link rel="canonical" href="http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/01 JS Engine/">
+        <link rel="canonical" href="http://advanced-js.shams-nahid.com/Notes/00 Questions/20 How Javascript Works/">
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>01 JS Engine - Advance JS Study Notes</title>
+        <title>20 How Javascript Works - Advance JS Study Notes</title>
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
@@ -54,11 +54,11 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../00 Questions/01 Questions/">01 Questions</a>
+    <a href="../01 Questions/">01 Questions</a>
 </li>
             
-<li >
-    <a href="../../00 Questions/20 How Javascript Works/">20 How Javascript Works</a>
+<li class="active">
+    <a href="./">20 How Javascript Works</a>
 </li>
     </ul>
   </li>
@@ -67,72 +67,72 @@
     <a href="#">01 Javascript Foundation</a>
     <ul class="dropdown-menu">
             
-<li class="active">
-    <a href="./">01 JS Engine</a>
+<li >
+    <a href="../../01 Javascript Foundation/01 JS Engine/">01 JS Engine</a>
 </li>
             
 <li >
-    <a href="../02 Writing Optimized Code/">02 Writing Optimized Code</a>
+    <a href="../../01 Javascript Foundation/02 Writing Optimized Code/">02 Writing Optimized Code</a>
 </li>
             
 <li >
-    <a href="../03 Call Stack and Memory Heap/">03 Call Stack and Memory Heap</a>
+    <a href="../../01 Javascript Foundation/03 Call Stack and Memory Heap/">03 Call Stack and Memory Heap</a>
 </li>
             
 <li >
-    <a href="../04 Memory Leak/">04 Memory Leak</a>
+    <a href="../../01 Javascript Foundation/04 Memory Leak/">04 Memory Leak</a>
 </li>
             
 <li >
-    <a href="../05 Single Threaded/">05 Single Threaded</a>
+    <a href="../../01 Javascript Foundation/05 Single Threaded/">05 Single Threaded</a>
 </li>
             
 <li >
-    <a href="../06 Javascript Runtime/">06 Javascript Runtime</a>
+    <a href="../../01 Javascript Foundation/06 Javascript Runtime/">06 Javascript Runtime</a>
 </li>
             
 <li >
-    <a href="../07 Execution Context/">07 Execution Context</a>
+    <a href="../../01 Javascript Foundation/07 Execution Context/">07 Execution Context</a>
 </li>
             
 <li >
-    <a href="../08 Lexical Environment/">08 Lexical Environment</a>
+    <a href="../../01 Javascript Foundation/08 Lexical Environment/">08 Lexical Environment</a>
 </li>
             
 <li >
-    <a href="../09 Hoisting/">09 Hoisting</a>
+    <a href="../../01 Javascript Foundation/09 Hoisting/">09 Hoisting</a>
 </li>
             
 <li >
-    <a href="../10 Fucntion Invoking/">10 Fucntion Invoking</a>
+    <a href="../../01 Javascript Foundation/10 Fucntion Invoking/">10 Fucntion Invoking</a>
 </li>
             
 <li >
-    <a href="../11 Scope Chain/">11 Scope Chain</a>
+    <a href="../../01 Javascript Foundation/11 Scope Chain/">11 Scope Chain</a>
 </li>
             
 <li >
-    <a href="../12 Weird Syntax/">12 Weird Syntax</a>
+    <a href="../../01 Javascript Foundation/12 Weird Syntax/">12 Weird Syntax</a>
 </li>
             
 <li >
-    <a href="../13 Scope/">13 Scope</a>
+    <a href="../../01 Javascript Foundation/13 Scope/">13 Scope</a>
 </li>
             
 <li >
-    <a href="../14 IIFE/">14 IIFE</a>
+    <a href="../../01 Javascript Foundation/14 IIFE/">14 IIFE</a>
 </li>
             
 <li >
-    <a href="../15 this/">15 this</a>
+    <a href="../../01 Javascript Foundation/15 this/">15 this</a>
 </li>
             
 <li >
-    <a href="../16 Promise/">Promise</a>
+    <a href="../../01 Javascript Foundation/16 Promise/">Promise</a>
 </li>
             
 <li >
-    <a href="../17 Async Await/">Async Await</a>
+    <a href="../../01 Javascript Foundation/17 Async Await/">Async Await</a>
 </li>
     </ul>
   </li>
@@ -229,12 +229,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../../00 Questions/20 How Javascript Works/">
+                                <a rel="next" href="../01 Questions/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../02 Writing Optimized Code/">
+                                <a rel="prev" href="../../01 Javascript Foundation/01 JS Engine/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -249,95 +249,56 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#js-engine">JS Engine</a></li>
-            <li><a href="#what-do-we-knowheard-about-js-engine">What do we know/heard about JS Engine?</a></li>
-            <li><a href="#ecma-script-engine">ECMA-Script Engine</a></li>
-            <li><a href="#inside-v8-engine">Inside V8 Engine</a></li>
-            <li><a href="#interpreter">Interpreter</a></li>
-            <li><a href="#compiler">Compiler</a></li>
-            <li><a href="#interpreter-vs-compiler">Interpreter Vs Compiler</a></li>
-            <li><a href="#jit-compiler">JIT Compiler</a></li>
-            <li><a href="#v8-and-jit-compiler">V8 and JIT Compiler</a></li>
-            <li><a href="#is-javascript-interpreted-language">Is Javascript interpreted language?</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="js-engine">JS Engine</h2>
-<h3 id="what-do-we-knowheard-about-js-engine">What do we know/heard about JS Engine?</h3>
+<p>A program does,</p>
 <ul>
-<li>Most cases, it uses <code>V8 Engine</code> internally</li>
-<li>It is single threaded and use call-back</li>
-<li>It is an interpreted language</li>
+<li>Allocate memory to store variables</li>
+<li>Parse and execute scripts (Read and run code)</li>
 </ul>
-<p>Let's talk about what this engine, we are mentioning.</p>
-<p>If I give a plain JS file to a Computer, It can not read or interpret the language.
-The CPU only understands the 0's and 1's.</p>
-<p>To fill this communication gap, we need a translator or interpreter. This is the position the V8 Engine come to play.</p>
-<p>This magical engine read our code and interpret it to the CPU.</p>
-<h3 id="ecma-script-engine">ECMA-Script Engine</h3>
+<p>Each browser has a javascript engine, and in chrome, we call it <code>V8</code>. This <code>V8</code> engine reads the Javascript codes and make it machine executable execution for browser.</p>
+<p>This <code>V8</code> engine is consist of two parts,</p>
 <ul>
-<li>First JS Engine</li>
-<li>Firefox still using spider monkey</li>
+<li>Memory Heap</li>
+<li>Call Stack</li>
 </ul>
-<p>Before 2008, most browser use very basic engines. When V8 came up, it was a significant pivotal time of JS.</p>
-<p>V8 was released by Google. While they were developing the Map application, it requires a powerful engine compare to traditional available JS engine.</p>
-<h3 id="inside-v8-engine">Inside V8 Engine</h3>
-<ul>
-<li>Most popular</li>
-<li>Most usages</li>
-<li>Blazing Fast</li>
-<li>Used by</li>
-<li>Chrome</li>
-<li>Node.js</li>
-<li>Written in C++</li>
-<li>It took the code and do the followings <code>Lexical Analysis</code></li>
-<li>Parser (Do the tokenizations)</li>
-<li>AST (aka, <code>Abstract Syntax Tree</code> From token, it forms the tree)</li>
-<li>Interpreter (Translate the code to <code>ByCode</code>)</li>
-<li>Profiler (Watcher for the <code>Interpreter</code> and looking for <code>Optimization</code>)</li>
-<li>Compiler (If <code>Profiler</code> point out for some <code>Optimization Required</code> in the <code>Interpreter</code> it )</li>
-<li>Optimization</li>
-</ul>
-<h3 id="interpreter">Interpreter</h3>
-<ul>
-<li>Translate and read the code line by line</li>
-<li>Interpreting code means</li>
-<li>Take a set of instructions</li>
-<li>Return answer by doing according to the instructions</li>
-<li>In this case translation is happening on the fly</li>
-</ul>
-<h3 id="compiler">Compiler</h3>
-<ul>
-<li>It does not translate on the fly</li>
-<li>It works ahead of time</li>
-<li>Went through the whole code base</li>
-<li>Convert in a such way, the machine can understand the code</li>
-<li>Example</li>
-<li>Babel (Take modern JS and make them compatible to Old browser)</li>
-<li>Typescript (Superset of JS, compile down to JS)</li>
-</ul>
-<h3 id="interpreter-vs-compiler">Interpreter Vs Compiler</h3>
-<ul>
-<li>Interpreter</li>
-<li>Quick to get up and running</li>
-<li>Slower for repeated code</li>
-<li>Compiler</li>
-<li>Took little more time to start up compare to the Interpreter</li>
-<li>Can use some optimization mechanism for repeated codebase</li>
-</ul>
-<h3 id="jit-compiler">JIT Compiler</h3>
-<p>Stands for <code>Just In Time</code> compiler.</p>
-<p>Both the interpreter and compiler has its pro and cons.</p>
-<p>Some engineers from google came up with the goodies of them and created the <code>JIT Compiler</code></p>
-<h3 id="v8-and-jit-compiler">V8 and JIT Compiler</h3>
-<p>In <code>V8</code>, the code is translated to <code>Byte Code</code> by <code>Interpreter</code>.
-The <code>V8</code> is intelligent enough to determine if there is an optimization is required.
-In this case the <code>V8</code> engine brings the <code>JIT Compiler</code>.</p>
-<h3 id="is-javascript-interpreted-language">Is Javascript interpreted language?</h3>
-<p>It depends on the implementation.</p>
-<p>Initially <code>JS</code> was the interpreted language. Now with <code>V8</code> it's the <code>Compiled</code> language.</p>
-<p>Same goes for the <code>Python</code>. It could be both, interpreted or compiled.</p></div>
+<p>The <code>Call Stack</code> read and execute the code.</p>
+<p><strong>Memory Heap</strong></p>
+<p><code>Memory Heap</code> does the variable allocation. We can allocate memory by simply,</p>
+<pre><code class="js">const a = 10;
+const b = 20;
+</code></pre>
+
+<p>Here in the <code>Memory Heap</code> we have allocated <code>a</code> and <code>b</code>. One concern, these are global variable and we need to clean these from memory. Because memory is limited. If we keep storing lots memory, the heap can be exceed and program will crash. It's a good practice to avoid global variables.</p>
+<p><strong>Call Stack</strong></p>
+<p>When we run a program, each program statement is stored in the call stack. When the statement is executed, te statement is removed from the stack.</p>
+<p>Since Javascript is single threaded, there is only one call stack.</p>
+<pre><code class="js">console.log(1);
+console.log(2);
+console.log(3);
+</code></pre>
+
+<p>Here. <code>console.log(1);</code> first loaded into the stack, then executed and removed from the stack. Then similar things happen to the <code>console.log(2);</code> and <code>console.log(3);</code>.</p>
+<p>Let's consider another example,</p>
+<pre><code class="js">function one() {
+  function two() {
+    console.log(2);
+  }
+  two();
+}
+
+one();
+</code></pre>
+
+<p>Here the call stack loaded as follows, first load <code>one()</code>, <code>two()</code> and finally <code>console.log(2)</code>,</p>
+<pre><code>console.log(2)
+two()
+one()
+</code></pre>
+
+<p>Then the stack got empty as follows, <code>console.log(2)</code>, <code>two()</code>, <code>one()</code>, in the reverse order.</p></div>
         </div>
 
         <footer class="col-md-12">

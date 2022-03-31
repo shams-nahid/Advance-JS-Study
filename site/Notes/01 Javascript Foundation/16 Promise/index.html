@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Shams Nahid">
+        <link rel="canonical" href="http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/16 Promise/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Promise - Advance JS Study Notes</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="../../../css/extra.css" rel="stylesheet">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../..">Advance JS Study Notes</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../..">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">00 Questions</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../00 Questions/01 Questions/">01 Questions</a>
+</li>
+            
+<li >
+    <a href="../../00 Questions/20 How Javascript Works/">20 How Javascript Works</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">01 Javascript Foundation</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../01 JS Engine/">01 JS Engine</a>
+</li>
+            
+<li >
+    <a href="../02 Writing Optimized Code/">02 Writing Optimized Code</a>
+</li>
+            
+<li >
+    <a href="../03 Call Stack and Memory Heap/">03 Call Stack and Memory Heap</a>
+</li>
+            
+<li >
+    <a href="../04 Memory Leak/">04 Memory Leak</a>
+</li>
+            
+<li >
+    <a href="../05 Single Threaded/">05 Single Threaded</a>
+</li>
+            
+<li >
+    <a href="../06 Javascript Runtime/">06 Javascript Runtime</a>
+</li>
+            
+<li >
+    <a href="../07 Execution Context/">07 Execution Context</a>
+</li>
+            
+<li >
+    <a href="../08 Lexical Environment/">08 Lexical Environment</a>
+</li>
+            
+<li >
+    <a href="../09 Hoisting/">09 Hoisting</a>
+</li>
+            
+<li >
+    <a href="../10 Fucntion Invoking/">10 Fucntion Invoking</a>
+</li>
+            
+<li >
+    <a href="../11 Scope Chain/">11 Scope Chain</a>
+</li>
+            
+<li >
+    <a href="../12 Weird Syntax/">12 Weird Syntax</a>
+</li>
+            
+<li >
+    <a href="../13 Scope/">13 Scope</a>
+</li>
+            
+<li >
+    <a href="../14 IIFE/">14 IIFE</a>
+</li>
+            
+<li >
+    <a href="../15 this/">15 this</a>
+</li>
+            
+<li class="active">
+    <a href="./">Promise</a>
+</li>
+            
+<li >
+    <a href="../17 Async Await/">Async Await</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">02 Javascript Types</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../02 Javascript Types/01 Types/">01 Types</a>
+</li>
+            
+<li >
+    <a href="../../02 Javascript Types/02 Pass By Value vs Reference/">02 Pass By Value vs Reference</a>
+</li>
+            
+<li >
+    <a href="../../02 Javascript Types/03 Type Coercion/">03 Type Coercion</a>
+</li>
+            
+<li >
+    <a href="../../02 Javascript Types/04 JTS/">04 JTS</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">03 Closures And Prototypes</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../03 Closures And Prototypes/01 Functions Are Objects/">01 Functions Are Objects</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/02 Function As First Class Citizen/">02 Function As First Class Citizen</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/03 Higher Order Function/">03 Higher Order Function</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/04 Closures/">04 Closures</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/05 Prototypal Inheritance 01/">05 Prototypal Inheritance 01</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/06 Prototypal Inheritance 02/">06 Prototypal Inheritance 02</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/07 Prototypal Inheritance 03/">07 Prototypal Inheritance 03</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/08 Prototypal Inheritance 04/">08 Prototypal Inheritance 04</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/09 Prototypal Inheritance 05/">09 Prototypal Inheritance 05</a>
+</li>
+            
+<li >
+    <a href="../../03 Closures And Prototypes/10 Prototypal Inheritance Exercise/">10 Prototypal Inheritance Exercise</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">04 OOP</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../04 OOP/01 OOP VS FP/">01 OOP VS FP</a>
+</li>
+            
+<li >
+    <a href="../../04 OOP/02 Factory Function/">02 Factory Function</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../15 this/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../17 Async Await/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/bmshamsnahid/Advance-JS-Study"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#promise">Promise</a></li>
+            <li><a href="#promise-structure">Promise Structure</a></li>
+            <li><a href="#promiseall">Promise.all</a></li>
+            <li><a href="#promiseallsettled">Promise.allSettled</a></li>
+            <li><a href="#promiseany">Promise.any</a></li>
+            <li><a href="#parallel-promise-example">Parallel Promise Example</a></li>
+            <li><a href="#race-promise-example">Race Promise Example</a></li>
+            <li><a href="#sequence-promise-example">Sequence Promise Example</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="promise">Promise</h1>
+<hr />
+<ul>
+<li><code>Promise</code> is a object, that will eventually produce a single value, could be resolved or reject.</li>
+<li><code>Promise</code> has 3 states,</li>
+<li>Fulfilled / resolved</li>
+<li>Rejected</li>
+<li>Pending</li>
+<li>Promise is Javascript native property and has own queue called <code>Job Queue</code> or <code>Micro Task Queue</code></li>
+<li>This <code>Job Queue</code> or <code>Micro Task Queue</code> is not part of <code>Call Back Queue</code> in <code>Event Loop</code></li>
+<li><code>Job Queue</code> or <code>Micro Task Queue</code> has higher priority than <code>Call Back Queue</code> aka <code>Event Loop</code> checks <code>Job Queue</code> before <code>Callback Queue</code></li>
+<li>Promise can run 3 ways,</li>
+<li><strong>Parallel</strong>: All promises will run parallel</li>
+<li><strong>Sequential</strong>: Promises will run one after another</li>
+<li><strong>Race</strong>: Promise will be resolved, when any of the promise in list is being resolved.</li>
+</ul>
+<h2 id="promise-structure">Promise Structure</h2>
+<p>We can make a promise using the <code>Promise</code> keyword,</p>
+<pre><code class="js">const myPromise = new Promise((resolve, reject) =&gt; {
+  if (EVERYTHING_WORKS_AS_EXPECTED) {
+    resolve('Things Worked');
+  } else {
+    reject('Something Went Wrong!');
+  }
+});
+</code></pre>
+
+<p>We can use the promise as follows,</p>
+<pre><code class="js">myPromise
+  .then(result =&gt; console.log(result))
+  .catch(error =&gt; {
+    // handle error
+  });
+</code></pre>
+
+<h3 id="chaining-promise-result">Chaining Promise Result</h3>
+<p>We can use chaining by using chaining in promise <code>then</code> ann update the keyword.</p>
+<pre><code class="js">const myPromise = new Promise((resolve, reject) =&gt; {
+  resolve('Favorite bands: ');
+});
+
+myPromise
+  .then(result =&gt; `${result} Warfaze`)
+  .then(result =&gt; `${result}, Shironamhin`)
+  .then(result =&gt; `${result}, Artcell`)
+  .then(result =&gt; `${result}, Aurthohin`)
+  .then(result =&gt; console.log(result));
+</code></pre>
+
+<p>We will get output of <code>Favorite bands: Warfaze, Shironamhin, Artcell, Aurthohin</code>.</p>
+<p>Here we return <code>Favorite bands:</code> in the first chain. Then updated the result in each of the chain using band names, <code>Warfaze</code>, <code>Shironamhin</code>, <code>Artcell</code>, <code>Authohin</code>.</p>
+<h3 id="throwing-error-from-promise-result">Throwing Error From Promise Result</h3>
+<p>In the promise chain, if there any error happens in the chain, it will directly jump to the <code>catch</code> statement.</p>
+<pre><code class="js">const myPromise = new Promise((resolve, reject) =&gt; {
+  resolve('Favorite bands: ');
+});
+
+myPromise
+  .then(result =&gt; {
+    throw Error;
+    return `${result} Warfaze`;
+  })
+  .then(result =&gt; `${result}, Shironamhin`)
+  .then(result =&gt; `${result}, Artcell`)
+  .then(result =&gt; `${result}, Aurthohin`)
+  .then(result =&gt; console.log(result))
+  .catch(error =&gt; console.log('Something went wrong!'));
+</code></pre>
+
+<p>We will get output of <code>Something went wrong!</code>.</p>
+<p>In this case, in the first <code>then</code> when the error will be thrown, all rest of the then will be ignored and <code>catch</code> will catch the error statement.</p>
+<h3 id="any-catch-will-be-ignored-if-no-error-is-thrown">Any Catch Will be Ignored If No Error is Thrown</h3>
+<pre><code class="js">const myPromise = new Promise((resolve, reject) =&gt; {
+  resolve('Favorite bands: ');
+});
+
+myPromise
+  .then(result =&gt; `${result} Warfaze`)
+  .catch(error =&gt; console.log('Something went wrong!'))
+  .then(result =&gt; `${result}, Shironamhin`)
+  .then(result =&gt; console.log(result));
+</code></pre>
+
+<p>We will get output of <code>Favorite bands: Warfaze, Shironamhin</code>.</p>
+<p>Since there is no error is being thrown in the chain, we do not encounter any catch statement and <code>Something went wrong!</code> will not be printed.</p>
+<h3 id="promise-chain-after-error">Promise Chain After Error</h3>
+<p>In promise chain, if there is an error, the chain jump to the catch block. If after the catch block, there is still chains, it will go further.</p>
+<pre><code class="js">const myPromise = new Promise((resolve, reject) =&gt; {
+  resolve('Favorite bands: ');
+});
+
+myPromise
+  .then(result =&gt; {
+    throw Error;
+    return `${result} Warfaze`;
+  })
+  .then(result =&gt; `${result}, Shironamhin`)
+  .then(result =&gt; `${result}, Artcell`)
+  .catch(error =&gt; console.log('Something went wrong!'))
+  .then(result =&gt; 'I love Aurthohin')
+  .then(result =&gt; console.log(result));
+</code></pre>
+
+<p>We will get output of,</p>
+<pre><code>
+Something went wrong!
+I love Aurthohin
+</code></pre>
+
+<p>Here, first we throw error and goes to the <code>catch</code> block. After the catch block, we continue to the <code>then</code> chaining.</p>
+<h3 id="finally">Finally</h3>
+<p>In promise chain, no matter what, <code>resolved</code> or <code>rejected</code>, the chain will goes to the finally block.</p>
+<p>Example of <code>finally</code> with <code>resolved</code> promise.</p>
+<pre><code class="js">const myPromise = new Promise((resolve, reject) =&gt; {
+  resolve('Favorite bands: ');
+});
+
+myPromise
+  .then(result =&gt; `${result} Warfaze`)
+  .then(result =&gt; console.log(result))
+  .finally(() =&gt; console.log('Finally Statement'));
+</code></pre>
+
+<p>Here we will get the output of,</p>
+<pre><code>Favorite bands:  Warfaze
+Finally Statement
+</code></pre>
+
+<p>Example of <code>finally</code> with <code>rejected</code> promise.</p>
+<pre><code class="js">const myPromise = new Promise((resolve, reject) =&gt; {
+  resolve('Favorite bands: ');
+});
+
+myPromise
+  .then(result =&gt; {
+    throw Error;
+    return `${result} Warfaze`;
+  })
+  .catch(error =&gt; console.log('Something went wrong!'))
+  .finally(() =&gt; console.log('Finally Statement'));
+</code></pre>
+
+<p>Here we will get the output of,</p>
+<pre><code>Something went wrong!
+Finally Statement
+</code></pre>
+
+<h2 id="promiseall">Promise.all</h2>
+<p>When we need to resolve multiple <code>promise</code>, we can make use of <code>Promise.all</code>. This <code>Promise.all</code> will be resolved only when all the promise is being resolved,</p>
+<pre><code class="js">const promise1 = new Promise(resolve =&gt; {
+  resolve('Promise 01');
+});
+
+const promise2 = new Promise(resolve =&gt; {
+  setTimeout(resolve, 5000, 'Warfaze');
+});
+
+Promise.all([promise1, promise2]).then(results =&gt;
+  results.map(res =&gt; console.log(res))
+);
+</code></pre>
+
+<p>After 5 seconds, we will get output,</p>
+<pre><code>Promise 01
+Warfaze
+</code></pre>
+
+<p>Here although the first promise <code>promise1</code> resolved earlier, we will not get the results until all the promises are resolved. In this case we have to wait 5 seconds (Second promise time) to get all the results.</p>
+<p>With <code>Promise.all</code>, the promise will be resolved only if all the promise is resolved. If one of the promise failed and resulted <code>rejected</code>, then all promise will be rejected.</p>
+<pre><code class="js">const promise1 = new Promise(resolve =&gt; {
+  resolve('Promise 01');
+});
+
+const promise2 = new Promise((resolve, reject) =&gt; {
+  reject('Something went wrong with promise2');
+});
+
+Promise.all([promise1, promise2])
+  .then(results =&gt; console.log(results))
+  .catch(error =&gt; console.log('Something Went Wrong'));
+</code></pre>
+
+<p>We will get output <code>Something Went Wrong</code>. Here the first promise resolved, but second promise is being <code>rejected</code>.</p>
+<blockquote>
+<p>In <code>Promise.all</code> all promise needs to be resolved, otherwise the chain will jump to the <code>catch</code> section.</p>
+</blockquote>
+<h2 id="promiseallsettled">Promise.allSettled</h2>
+<p>Returns the result of all promises even if some fails.</p>
+<pre><code class="js">const promise1 = new Promise(resolve =&gt;
+  setTimeout(resolve('This is resolve'), 3000)
+);
+
+const promise2 = new Promise((resolve, reject) =&gt;
+  setTimeout(reject('Something went wrong!'), 3000)
+);
+
+Promise.allSettled([promise1, promise2]).then(data =&gt; console.log(data));
+</code></pre>
+
+<p>In this case, we will get output of all promises, resolved and rejected,</p>
+<pre><code>[
+    {
+        &quot;status&quot;: &quot;fulfilled&quot;,
+        &quot;value&quot;: &quot;This is resolve&quot;
+    },
+    {
+        &quot;status&quot;: &quot;rejected&quot;,
+        &quot;reason&quot;: &quot;Something went wrong!&quot;
+    }
+]
+</code></pre>
+
+<h2 id="promiseany">Promise.any</h2>
+<p>It resolves if any of the promise is being resolved first. If none of promise able to resolved, only then the</p>
+<h2 id="parallel-promise-example">Parallel Promise Example</h2>
+<p>In parallel promise, we will get the resolved result when all the promises are being resolved.</p>
+<pre><code class="js">const promisify = (item, delay) =&gt;
+  new Promise(resolve =&gt; setTimeout(() =&gt; resolve(item), delay));
+
+const a = () =&gt; promisify('a', 100);
+const b = () =&gt; promisify('b', 5000);
+const c = () =&gt; promisify('c', 3000);
+
+async function parallel() {
+  const promises = [a(), b(), c()];
+  const [output1, output2, output3] = await Promise.all(promises);
+  return `parallel is done: ${output1} ${output2} ${output3}`;
+}
+
+async function parallel() {
+  const promises = [a(), b(), c()];
+  const [output1, output2, output3] = await Promise.all(promises);
+  return `parallel is done: ${output1} ${output2} ${output3}`;
+}
+
+parallel().then(console.log);
+</code></pre>
+
+<p>After 5 seconds, we will get the output of <code>parallel is done: a b c</code>.</p>
+<h2 id="race-promise-example">Race Promise Example</h2>
+<p>In race promise, we will get only one resolved result from the first resolved promise.</p>
+<pre><code class="js">const promisify = (item, delay) =&gt;
+  new Promise(resolve =&gt; setTimeout(() =&gt; resolve(item), delay));
+
+const a = () =&gt; promisify('a', 100);
+const b = () =&gt; promisify('b', 5000);
+const c = () =&gt; promisify('c', 3000);
+
+async function race() {
+  const promises = [a(), b(), c()];
+  const output = await Promise.race(promises);
+  return `race is done: ${output}`;
+}
+
+race().then(console.log);
+</code></pre>
+
+<p>Since promise <code>a</code> will be resolved earlier, after 100 milliseconds, we will get the output of <code>race is done: a</code>.</p>
+<h2 id="sequence-promise-example">Sequence Promise Example</h2>
+<p>In sequence promise, all the promises will be executed one after another. We will get the resolved result when all the promise is being resolved.</p>
+<pre><code class="js">const promisify = (item, delay) =&gt;
+  new Promise(resolve =&gt; setTimeout(() =&gt; resolve(item), delay));
+
+const a = () =&gt; promisify('a', 100);
+const b = () =&gt; promisify('b', 5000);
+const c = () =&gt; promisify('c', 3000);
+
+async function sequence() {
+  const output1 = await a();
+  const output2 = await b();
+  const output3 = await c();
+  return `sequence is done: ${output1} ${output2} ${output3}`;
+}
+
+sequence().then(console.log);
+</code></pre>
+
+<p>Here all the promises will be resolved one after another and we will get a output of <code>sequence is done: a b c</code> after 8.01 seconds later.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2021 <a href="https://shams-nahid.com/">Shams Nahid</a>.</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

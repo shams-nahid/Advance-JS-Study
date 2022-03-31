@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="author" content="Shams Nahid">
-        <link rel="canonical" href="http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/01 JS Engine/">
+        <link rel="canonical" href="http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/17 Async Await/">
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>01 JS Engine - Advance JS Study Notes</title>
+        <title>Async Await - Advance JS Study Notes</title>
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
@@ -67,8 +67,8 @@
     <a href="#">01 Javascript Foundation</a>
     <ul class="dropdown-menu">
             
-<li class="active">
-    <a href="./">01 JS Engine</a>
+<li >
+    <a href="../01 JS Engine/">01 JS Engine</a>
 </li>
             
 <li >
@@ -131,8 +131,8 @@
     <a href="../16 Promise/">Promise</a>
 </li>
             
-<li >
-    <a href="../17 Async Await/">Async Await</a>
+<li class="active">
+    <a href="./">Async Await</a>
 </li>
     </ul>
   </li>
@@ -229,12 +229,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../../00 Questions/20 How Javascript Works/">
+                                <a rel="next" href="../16 Promise/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../02 Writing Optimized Code/">
+                                <a rel="prev" href="../../02 Javascript Types/01 Types/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -249,95 +249,33 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#js-engine">JS Engine</a></li>
-            <li><a href="#what-do-we-knowheard-about-js-engine">What do we know/heard about JS Engine?</a></li>
-            <li><a href="#ecma-script-engine">ECMA-Script Engine</a></li>
-            <li><a href="#inside-v8-engine">Inside V8 Engine</a></li>
-            <li><a href="#interpreter">Interpreter</a></li>
-            <li><a href="#compiler">Compiler</a></li>
-            <li><a href="#interpreter-vs-compiler">Interpreter Vs Compiler</a></li>
-            <li><a href="#jit-compiler">JIT Compiler</a></li>
-            <li><a href="#v8-and-jit-compiler">V8 and JIT Compiler</a></li>
-            <li><a href="#is-javascript-interpreted-language">Is Javascript interpreted language?</a></li>
+        <li class="main active"><a href="#async-await">Async Await</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="js-engine">JS Engine</h2>
-<h3 id="what-do-we-knowheard-about-js-engine">What do we know/heard about JS Engine?</h3>
+<h1 id="async-await">Async Await</h1>
 <ul>
-<li>Most cases, it uses <code>V8 Engine</code> internally</li>
-<li>It is single threaded and use call-back</li>
-<li>It is an interpreted language</li>
+<li>Underneath the hood, the <code>async</code> function returns a promise.</li>
+<li>Biggest benefit of using <code>async-await</code> is it makes code easier to read.</li>
 </ul>
-<p>Let's talk about what this engine, we are mentioning.</p>
-<p>If I give a plain JS file to a Computer, It can not read or interpret the language.
-The CPU only understands the 0's and 1's.</p>
-<p>To fill this communication gap, we need a translator or interpreter. This is the position the V8 Engine come to play.</p>
-<p>This magical engine read our code and interpret it to the CPU.</p>
-<h3 id="ecma-script-engine">ECMA-Script Engine</h3>
-<ul>
-<li>First JS Engine</li>
-<li>Firefox still using spider monkey</li>
-</ul>
-<p>Before 2008, most browser use very basic engines. When V8 came up, it was a significant pivotal time of JS.</p>
-<p>V8 was released by Google. While they were developing the Map application, it requires a powerful engine compare to traditional available JS engine.</p>
-<h3 id="inside-v8-engine">Inside V8 Engine</h3>
-<ul>
-<li>Most popular</li>
-<li>Most usages</li>
-<li>Blazing Fast</li>
-<li>Used by</li>
-<li>Chrome</li>
-<li>Node.js</li>
-<li>Written in C++</li>
-<li>It took the code and do the followings <code>Lexical Analysis</code></li>
-<li>Parser (Do the tokenizations)</li>
-<li>AST (aka, <code>Abstract Syntax Tree</code> From token, it forms the tree)</li>
-<li>Interpreter (Translate the code to <code>ByCode</code>)</li>
-<li>Profiler (Watcher for the <code>Interpreter</code> and looking for <code>Optimization</code>)</li>
-<li>Compiler (If <code>Profiler</code> point out for some <code>Optimization Required</code> in the <code>Interpreter</code> it )</li>
-<li>Optimization</li>
-</ul>
-<h3 id="interpreter">Interpreter</h3>
-<ul>
-<li>Translate and read the code line by line</li>
-<li>Interpreting code means</li>
-<li>Take a set of instructions</li>
-<li>Return answer by doing according to the instructions</li>
-<li>In this case translation is happening on the fly</li>
-</ul>
-<h3 id="compiler">Compiler</h3>
-<ul>
-<li>It does not translate on the fly</li>
-<li>It works ahead of time</li>
-<li>Went through the whole code base</li>
-<li>Convert in a such way, the machine can understand the code</li>
-<li>Example</li>
-<li>Babel (Take modern JS and make them compatible to Old browser)</li>
-<li>Typescript (Superset of JS, compile down to JS)</li>
-</ul>
-<h3 id="interpreter-vs-compiler">Interpreter Vs Compiler</h3>
-<ul>
-<li>Interpreter</li>
-<li>Quick to get up and running</li>
-<li>Slower for repeated code</li>
-<li>Compiler</li>
-<li>Took little more time to start up compare to the Interpreter</li>
-<li>Can use some optimization mechanism for repeated codebase</li>
-</ul>
-<h3 id="jit-compiler">JIT Compiler</h3>
-<p>Stands for <code>Just In Time</code> compiler.</p>
-<p>Both the interpreter and compiler has its pro and cons.</p>
-<p>Some engineers from google came up with the goodies of them and created the <code>JIT Compiler</code></p>
-<h3 id="v8-and-jit-compiler">V8 and JIT Compiler</h3>
-<p>In <code>V8</code>, the code is translated to <code>Byte Code</code> by <code>Interpreter</code>.
-The <code>V8</code> is intelligent enough to determine if there is an optimization is required.
-In this case the <code>V8</code> engine brings the <code>JIT Compiler</code>.</p>
-<h3 id="is-javascript-interpreted-language">Is Javascript interpreted language?</h3>
-<p>It depends on the implementation.</p>
-<p>Initially <code>JS</code> was the interpreted language. Now with <code>V8</code> it's the <code>Compiled</code> language.</p>
-<p>Same goes for the <code>Python</code>. It could be both, interpreted or compiled.</p></div>
+<p>Example of regular Promise,</p>
+<pre><code class="js">movePlayer('left to right')
+  .then(() =&gt; movePlayer('bottom to top'))
+  .then(() =&gt; movePlayer('right to left'))
+  .then(() =&gt; movePlayer('bottom to top'));
+</code></pre>
+
+<p>Players operation,</p>
+<pre><code class="js">async function playerOperation() {
+  await movePlayer('left to right');
+  await movePlayer('bottom to top');
+  await movePlayer('right to  left');
+  await movePlayer('bottom to top');
+}
+</code></pre>
+
+<p><code>async-await</code> gives us control how the promise work internally and inside the <code>async</code> method, we can do the synchronous programming.</p></div>
         </div>
 
         <footer class="col-md-12">

@@ -2,162 +2,182 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>http://advanced-js.shams-nahid.com/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://advanced-js.shams-nahid.com/Notes/00 Questions/01 Questions/</loc>
+     <lastmod>2022-02-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://advanced-js.shams-nahid.com/Notes/00 Questions/20 How Javascript Works/</loc>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/01 JS Engine/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/02 Writing Optimized Code/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/03 Call Stack and Memory Heap/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/04 Memory Leak/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/05 Single Threaded/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/06 Javascript Runtime/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/07 Execution Context/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/08 Lexical Environment/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/09 Hoisting/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/10 Fucntion Invoking/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/11 Scope Chain/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/12 Weird Syntax/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/13 Scope/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/14 IIFE/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/15 this/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/16 Promise/</loc>
+     <lastmod>2022-02-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://advanced-js.shams-nahid.com/Notes/01 Javascript Foundation/17 Async Await/</loc>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/02 Javascript Types/01 Types/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/02 Javascript Types/02 Pass By Value vs Reference/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/02 Javascript Types/03 Type Coercion/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/02 Javascript Types/04 JTS/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/03 Closures And Prototypes/01 Functions Are Objects/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/03 Closures And Prototypes/02 Function As First Class Citizen/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/03 Closures And Prototypes/03 Higher Order Function/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/03 Closures And Prototypes/04 Closures/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/03 Closures And Prototypes/05 Prototypal Inheritance 01/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/03 Closures And Prototypes/06 Prototypal Inheritance 02/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/03 Closures And Prototypes/07 Prototypal Inheritance 03/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/03 Closures And Prototypes/08 Prototypal Inheritance 04/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/03 Closures And Prototypes/09 Prototypal Inheritance 05/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/03 Closures And Prototypes/10 Prototypal Inheritance Exercise/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/04 OOP/01 OOP VS FP/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>http://advanced-js.shams-nahid.com/Notes/04 OOP/02 Factory Function/</loc>
-     <lastmod>2021-10-12</lastmod>
+     <lastmod>2022-02-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
