@@ -42,7 +42,7 @@ console.log(myVal);
 
 ```js
 if (true) {
-  const myVal = 'Hello World!!';
+  let myVal = 'Hello World!!';
 }
 
 console.log(myVal);

@@ -1,4 +1,9 @@
 ## this
+- What is `this`
+- Preserve `this`
+- Manipulate `this`
+
+### Definition
 
 - `this` is the object, the function is property of
 
@@ -55,6 +60,7 @@ const a = function () {
     };
     c.hi();
   };
+  b();
 };
 
 a();
@@ -90,6 +96,12 @@ Here for `a`, the `this` context is `obj`.
 For `b`, the `this` context should be `obj`. But since, `this` is not lexically scoped and follow method calls, `b` has the `this` context of `window`.
 
 This is why `this` follows the `dynamic scoped` instead of `lexical scoped`.
+
+We can preserve this context,
+
+- By preserving it in a variable
+- Using arrow method
+- Using bind method (Ex. first bind and then obj.prop()()) 
 
 To solve this `dynamic scope` issue, we can use `arrow method`. `Arrow method` is bound to the `lexical scoped`.
 
@@ -350,7 +362,7 @@ Example
 const myObject = {
   name: 'foo',
   task: function () {
-    return `Do ${this.name} task.`;
+    return `${this.name} task.`;
   },
   doTask: function () {
     return `Do ${this.task()}`;
