@@ -181,7 +181,7 @@ Something went wrong!
 Finally Statement
 ```
 
-## Promise.all
+## Promise.all (Resolve only when all is resolved)
 
 When we need to resolve multiple `promise`, we can make use of `Promise.all`. This `Promise.all` will be resolved only when all the promise is being resolved,
 
@@ -228,7 +228,7 @@ We will get output `Something Went Wrong`. Here the first promise resolved, but 
 
 > In `Promise.all` all promise needs to be resolved, otherwise the chain will jump to the `catch` section.
 
-## Promise.allSettled
+## Promise.allSettled (Resolved with all resolved and rejected result)
 
 Returns the result of all promises even if some fails.
 
@@ -259,7 +259,7 @@ In this case, we will get output of all promises, resolved and rejected,
 ]
 ```
 
-## Promise.any
+## Promise.any (The moment any of the promise is resolved, return)
 
 It resolves if any of the promise is being resolved first. If none of promise able to resolved, only then the
 
@@ -292,7 +292,7 @@ parallel().then(console.log);
 
 After 5 seconds, we will get the output of `parallel is done: a b c`.
 
-## Race Promise Example
+## Promise.race (Resolved when any promise resolved, if one rejected before any other resolved, result is reject)
 
 In race promise, we will get only one resolved result from the first resolved promise.
 
