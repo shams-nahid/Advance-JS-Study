@@ -1,5 +1,6 @@
 ## Lexical Environment
 
+- [Good Explaination](https://dev.to/abdulazizcode/scope-lexical-environment-4pdd)
 - Lexical environment is a place where we write code
 - Every time we create an execution context, code inside these contexts are under a lexical environment
 - When we do the `lexical analysis`, it find the work or token location or which context it belongs to

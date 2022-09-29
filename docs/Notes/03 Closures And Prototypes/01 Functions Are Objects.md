@@ -54,11 +54,11 @@
   - Using `call` method
 
     ```js
-    const thirdWay() {
+    const thirdWay = () => {
       return 3;
     }
 
-    thirdWay();
+    thirdWay.call();
     ```
 
   - Using `Function` constructor

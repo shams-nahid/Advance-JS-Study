@@ -311,6 +311,12 @@ function traverse() {
 traverse();
 ```
 
+Output will be,
+
+```
+4 4 4 4
+```
+
 In this case, the var is used the hoisting and get the laterst index. using `let` instead of `var` can resolve the issue.
 
 ```js
