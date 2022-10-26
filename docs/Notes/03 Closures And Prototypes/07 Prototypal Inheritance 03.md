@@ -62,7 +62,7 @@ We know `function` are special type of `object` in `Javascript`.
 So the following statement should return `true`.
 
 ```js
-myMethod.hasOwnProperty(call);
+myMethod.hasOwnProperty('call');
 ```
 
 But this will return `false`.
@@ -89,7 +89,7 @@ And this `__proto__` of the base function `prototype` chain to the base object `
 
 Base object `__proto__` of the `prototype` property point to the `null`.
 
-### Prototype Chian for Function
+### Prototypes Chian for Array
 
 ---
 

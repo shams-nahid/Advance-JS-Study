@@ -20,14 +20,24 @@ When using `function` keyword, the `this` context is the `new Date`.
 But with `arrow method` the `this` context is the `arrow method` itself, given below,
 
 ```js
-() => {
+Date.prototype.lastYear = () => {
   return this.getFullYear() - 1;
 };
+
+new Date('1900-10-10').lastYear();
+```
+
+It will throw error of,
+
+```
+TypeError: this.getFullYear is not a function
 ```
 
 ### Manipulate the `map` functionality of Array
 
 ---
+
+We will add a text `manupulated` before each values of array,
 
 ```js
 Array.prototype.map = function (args) {

@@ -47,7 +47,7 @@ const dragon = {
     return 5;
   },
   sing() {
-    if (fire) {
+    if (this.fire) {
       return `I am ${this.name}, the breather of fire`;
     }
   }

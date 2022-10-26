@@ -18,13 +18,13 @@ const array = [];
 Here we created an array. This array object is created by the constructor of a object. We can access theses constructor anr other array methods like `concat`, `fill`, `find`, `push`, `pop` etc using the following,
 
 ```js
-console.log(array.__proto__);
+array.__proto__;
 ```
 
 Using `prototype chain` we can access the base object, using the following,
 
 ```js
-console.log(array.__proto__.__proto__);
+array.__proto__.__proto__;
 ```
 
 From this base object, we can access the `base object` properties and methods like, `constructor`, `hasOwnProperty`, `toString`, `valueOf` etc.
@@ -48,13 +48,13 @@ function a() {}
 Using prototype chain, we can observe the `native function`. The `native function` is the one, created all other `functions`.
 
 ```js
-console.log(a.__proto__);
+a.__proto__;
 ```
 
 Using the `prototype chain`, if we go one step closer, we will find the `base object`.
 
 ```js
-console.log(a.__proto__.__proto__);
+a.__proto__.__proto__;
 ```
 
 **Example 02: Object Prototype Chain**
