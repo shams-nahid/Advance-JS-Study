@@ -338,3 +338,9 @@ sequence().then(console.log);
 ```
 
 Here all the promises will be resolved one after another and we will get a output of `sequence is done: a b c` after 8.01 seconds later.
+
+## Q/A
+
+- https://betterprogramming.pub/10-javascript-promise-challenges-before-you-start-an-interview-c9af8d4144ec
+- https://medium.com/frontend-canteen/10-code-challenges-to-master-promise-then-and-promise-catch-3da2bdea1d97
+- https://andreassujono.medium.com/tricky-event-loop-macrotask-and-microtask-question-506956b0a26d
