@@ -1,3 +1,5 @@
+- Generics
+  - https://www.interviewbit.com/javascript-interview-questions/
 - Prototype
   - https://dev.to/macmacky/70-javascript-interview-questions-5gfi#25-what-is-the-prototype-of-an-object
 - Objects
