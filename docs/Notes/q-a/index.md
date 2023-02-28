@@ -1,1 +1,4 @@
-1. https://dev.to/macmacky/70-javascript-interview-questions-5gfi#25-what-is-the-prototype-of-an-object
+- Prototype
+  - https://dev.to/macmacky/70-javascript-interview-questions-5gfi#25-what-is-the-prototype-of-an-object
+- Objects
+  - https://codeburst.io/javascript-interview-questions-objects-171c1d86512d
