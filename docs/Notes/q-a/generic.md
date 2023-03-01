@@ -38,4 +38,55 @@
 
 **05. Passed by value vs Passed by reference?**
 
+In JS, primitive types are passed by value and non primitive types are passed by reference.
 
+**06. Feature of use strict mode?**
+
+- Prevent using non declare variable
+- Prevent using reserved keyword, will be used in future version of JS
+- Prevent object-properties deletion
+
+**07. exec() vs test() in JS?**
+
+Both search for pattern in string. If found `exec()` return the string, on the other hand `test()` return boolean.
+
+**08. scope and scope chain in JS?**
+
+JS has 3 sscopes
+
+- Global namespace scope
+- Function scope
+- Block scope
+
+Scope chain,
+
+When a variable is not found in block scope, it goes upper scope and continue untill found the variable.
+
+**09. What are constructor function?**
+
+Allow creating object from a function. Consider two object,
+
+```js
+const person1 = {
+  name: 'name1'
+}
+
+const person2 = {
+  name: 'name2'
+}
+```
+
+We can simplify using function constructor,
+
+```js
+function Person (name) {
+  this.name = name;
+}
+
+const person1 = new Person('name1');
+const person2 = new Person('name2');
+```
+
+**10. What is DOM?**
+
+`DOM` is document object model. When browser render the html, it first create a object tree and we call it dom.
